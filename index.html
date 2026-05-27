@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IndieGameDeep — Indie Game Navigation Hub</title>
+<meta name="description" content="Your quick gateway to the best indie game guides. Stardew Valley, Hollow Knight, Hades and more.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>tailwind.config={theme:{extend:{fontFamily:{sans:['Inter','sans-serif'],display:['Space Grotesk','sans-serif']}}}}</script>
+<style>
+body{font-family:'Inter',sans-serif;background:#f8fafc}
+.font-display{font-family:'Space Grotesk',sans-serif}
+.game-card{transition:all .25s cubic-bezier(.4,0,.2,1)}
+.game-card:hover{transform:translateY(-4px);box-shadow:0 16px 32px -8px rgba(0,0,0,.1)}
+.game-card:hover .card-icon{transform:scale(1.1)}
+.game-card:hover .card-arrow{opacity:1;transform:translateX(0)}
+.card-icon{transition:transform .25s}
+.card-arrow{opacity:0;transform:translateX(-4px);transition:all .2s}
+</style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+<header class="border-b border-slate-200 bg-white/80 backdrop-blur-md sticky top-0 z-50">
+  <div class="max-w-5xl mx-auto px-4 h-14 flex items-center justify-between">
+    <div class="flex items-center gap-2">
+      <div class="w-8 h-8 rounded-lg bg-emerald-600 flex items-center justify-center">
+        <i data-lucide="gamepad-2" class="w-4 h-4 text-white"></i>
+      </div>
+      <span class="font-display text-lg font-bold text-slate-900">IndieGame<span class="text-emerald-600">Deep</span></span>
+    </div>
+    <a href="mailto:hello@indiegamedeep.com" class="text-xs text-slate-400 hover:text-emerald-600 transition">Contact</a>
+  </div>
+</header>
+
+<main class="flex-1">
+  <div class="max-w-5xl mx-auto px-4 py-16 md:py-24">
+
+    <div class="text-center mb-14">
+      <h1 class="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 tracking-tight mb-4">Pick Your Game</h1>
+      <p class="text-slate-500 text-base md:text-lg max-w-md mx-auto">Quick links to the indie game guides you love.</p>
+    </div>
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 md:gap-5">
+
+      <!-- ★ Stardew Valley -->
+      <a href="http://www.indiegamedeep.com/stardew_valley_guide/" class="game-card bg-white border border-emerald-200 rounded-2xl p-5 flex flex-col items-center text-center group hover:border-emerald-400 relative overflow-hidden">
+        <div class="absolute top-2 right-2"><span class="text-[9px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">★ Pick</span></div>
+        <div class="card-icon w-14 h-14 rounded-2xl bg-emerald-50 flex items-center justify-center mb-3 text-2xl">🌾</div>
+        <span class="text-sm font-semibold text-slate-900 group-hover:text-emerald-700 transition">Stardew Valley</span>
+        <span class="text-[11px] text-slate-400 mt-0.5">Farming & Life Sim</span>
+        <div class="card-arrow mt-2 text-emerald-500"><i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i></div>
+      </a>
+
+      <!-- Hollow Knight -->
+      <a href="#" class="game-card bg-white border border-slate-200 rounded-2xl p-5 flex flex-col items-center text-center group hover:border-indigo-300">
+        <div class="card-icon w-14 h-14 rounded-2xl bg-indigo-50 flex items-center justify-center mb-3 text-2xl">🦋</div>
+        <span class="text-sm font-semibold text-slate-900 group-hover:text-indigo-600 transition">Hollow Knight</span>
+        <span class="text-[11px] text-slate-400 mt-0.5">Metroidvania</span>
+        <div class="card-arrow mt-2 text-indigo-400"><i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i></div>
+      </a>
+
+      <!-- Hollow Knight: Silksong -->
+      <a href="#" class="game-card bg-white border border-slate-200 rounded-2xl p-5 flex flex-col items-center text-center group hover:border-indigo-300">
+        <div class="card-icon w-14 h-14 rounded-2xl bg-indigo-50 flex items-center justify-center mb-3 text-2xl">🧵</div>
+        <span class="text-sm font-semibold text-slate-900 group-hover:text-indigo-600 transition">Silksong</span>
+        <span class="text-[11px] text-slate-400 mt-0.5">Metroidvania</span>
+        <div class="card-arrow mt-2 text-indigo-400"><i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i></div>
+      </a>
+
+      <!-- Hades -->
+      <a href="#" class="game-card bg-white border border-slate-200 rounded-2xl p-5 flex flex-col items-center text-center group hover:border-red-300">
+        <div class="card-icon w-14 h-14 rounded-2xl bg-red-50 flex items-center justify-center mb-3 text-2xl">🔥</div>
+        <span class="text-sm font-semibold text-slate-900 group-hover:text-red-600 transition">Hades</span>
+        <span class="text-[11px] text-slate-400 mt-0.5">Roguelike</span>
+        <div class="card-arrow mt-2 text-red-400"><i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i></div>
+      </a>
+
+      <!-- Hades II -->
+      <a href="#" class="game-card bg-white border border-slate-200 rounded-2xl p-5 flex flex-col items-center text-center group hover:border-red-300">
+        <div class="card-icon w-14 h-14 rounded-2xl bg-red-50 flex items-center justify-center mb-3 text-2xl">⚡</div>
+        <span class="text-sm font-semibold text-slate-900 group-hover:text-red-600 transition">Hades II</span>
+        <span class="text-[11px] text-slate-400 mt-0.5">Roguelike</span>
+        <div class="card-arrow mt-2 text-red-400"><i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i></div>
+      </a>
+
+      <!-- Celeste -->
+      <a href="#" class="game-card bg-white border border-slate-200 rounded-2xl p-5 flex flex-col items-center text-center group hover:border-pink-300">
+        <div class="card-icon w-14 h-14 rounded-2xl bg-pink-50 flex items-center justify-center mb-3 text-2xl">🍓</div>
+        <span class="text-sm font-semibold text-slate-900 group-hover:text-pink-600 transition">Celeste</span>
+        <span class="text-[11px] text-slate-400 mt-0.5">Platformer</span>
+        <div class="card-arrow mt-2 text-pink-400"><i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i></div>
+      </a>
+
+      <!-- Slay the Spire -->
+      <a href="#" class="game-card bg-white border border-slate-200 rounded-2xl p-5 flex flex-col items-center text-center group hover:border-violet-300">
+        <div class="card-icon w-14 h-14 rounded-2xl bg-violet-50 flex items-center justify-center mb-3 text-2xl">🃏</div>
+        <span class="text-sm font-semibold text-slate-900 group-hover:text-violet-600 transition">Slay the Spire</span>
+        <span class="text-[11px] text-slate-400 mt-0.5">Deckbuilder</span>
+        <div class="card-arrow mt-2 text-violet-400"><i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i></div>
+      </a>
+
+      <!-- Balatro -->
+      <a href="#" class="game-card bg-white border border-slate-200 rounded-2xl p-5 flex flex-col items-center text-center group hover:border-red-300">
+        <div class="card-icon w-14 h-14 rounded-2xl bg-red-50 flex items-center justify-center mb-3 text-2xl">🤡</div>
+        <span class="text-sm font-semibold text-slate-900 group-hover:text-red-600 transition">Balatro</span>
+        <span class="text-[11px] text-slate-400 mt-0.5">Card Roguelike</span>
+        <div class="card-arrow mt-2 text-red-400"><i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i></div>
+      </a>
+
+      <!-- Dead Cells -->
+      <a href="#" class="game-card bg-white border border-slate-200 rounded-2xl p-5 flex flex-col items-center text-center group hover:border-amber-300">
+        <div class="card-icon w-14 h-14 rounded-2xl bg-amber-50 flex items-center justify-center mb-3 text-2xl">💀</div>
+        <span class="text-sm font-semibold text-slate-900 group-hover:text-amber-600 transition">Dead Cells</span>
+        <span class="text-[11px] text-slate-400 mt-0.5">Action Roguelike</span>
+        <div class="card-arrow mt-2 text-amber-400"><i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i></div>
+      </a>
+
+      <!-- Cuphead -->
+      <a href="#" class="game-card bg-white border border-slate-200 rounded-2xl p-5 flex flex-col items-center text-center group hover:border-orange-300">
+        <div class="card-icon w-14 h-14 rounded-2xl bg-orange-50 flex items-center justify-center mb-3 text-2xl">🍵</div>
+        <span class="text-sm font-semibold text-slate-900 group-hover:text-orange-600 transition">Cuphead</span>
+        <span class="text-[11px] text-slate-400 mt-0.5">Run & Gun</span>
+        <div class="card-arrow mt-2 text-orange-400"><i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i></div>
+      </a>
+
+      <!-- Undertale -->
+      <a href="#" class="game-card bg-white border border-slate-200 rounded-2xl p-5 flex flex-col items-center text-center group hover:border-red-300">
+        <div class="card-icon w-14 h-14 rounded-2xl bg-red-50 flex items-center justify-center mb-3 text-2xl">❤️</div>
+        <span class="text-sm font-semibold text-slate-900 group-hover:text-red-600 transition">Undertale</span>
+        <span class="text-[11px] text-slate-400 mt-0.5">RPG</span>
+        <div class="card-arrow mt-2 text-red-400"><i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i></div>
+      </a>
+
+      <!-- Binding of Isaac -->
+      <a href="#" class="game-card bg-white border border-slate-200 rounded-2xl p-5 flex flex-col items-center text-center group hover:border-purple-300">
+        <div class="card-icon w-14 h-14 rounded-2xl bg-purple-50 flex items-center justify-center mb-3 text-2xl">😢</div>
+        <span class="text-sm font-semibold text-slate-900 group-hover:text-purple-600 transition">Isaac: Repentance</span>
+        <span class="text-[11px] text-slate-400 mt-0.5">Roguelike</span>
+        <div class="card-arrow mt-2 text-purple-400"><i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i></div>
+      </a>
+
+      <!-- Terraria -->
+      <a href="#" class="game-card bg-white border border-slate-200 rounded-2xl p-5 flex flex-col items-center text-center group hover:border-blue-300">
+        <div class="card-icon w-14 h-14 rounded-2xl bg-blue-50 flex items-center justify-center mb-3 text-2xl">🧱</div>
+        <span class="text-sm font-semibold text-slate-900 group-hover:text-blue-600 transition">Terraria</span>
+        <span class="text-[11px] text-slate-400 mt-0.5">Sandbox</span>
+        <div class="card-arrow mt-2 text-blue-400"><i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i></div>
+      </a>
+
+      <!-- Vampire Survivors -->
+      <a href="#" class="game-card bg-white border border-slate-200 rounded-2xl p-5 flex flex-col items-center text-center group hover:border-purple-300">
+        <div class="card-icon w-14 h-14 rounded-2xl bg-purple-50 flex items-center justify-center mb-3 text-2xl">🧛</div>
+        <span class="text-sm font-semibold text-slate-900 group-hover:text-purple-600 transition">Vampire Survivors</span>
+        <span class="text-[11px] text-slate-400 mt-0.5">Bullet Heaven</span>
+        <div class="card-arrow mt-2 text-purple-400"><i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i></div>
+      </a>
+
+      <!-- Animal Well -->
+      <a href="#" class="game-card bg-white border border-slate-200 rounded-2xl p-5 flex flex-col items-center text-center group hover:border-teal-300">
+        <div class="card-icon w-14 h-14 rounded-2xl bg-teal-50 flex items-center justify-center mb-3 text-2xl">🪱</div>
+        <span class="text-sm font-semibold text-slate-900 group-hover:text-teal-600 transition">Animal Well</span>
+        <span class="text-[11px] text-slate-400 mt-0.5">Puzzle Platformer</span>
+        <div class="card-arrow mt-2 text-teal-400"><i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i></div>
+      </a>
+
+      <!-- Monster Train 2 -->
+      <a href="#" class="game-card bg-white border border-slate-200 rounded-2xl p-5 flex flex-col items-center text-center group hover:border-orange-300">
+        <div class="card-icon w-14 h-14 rounded-2xl bg-orange-50 flex items-center justify-center mb-3 text-2xl">🚂</div>
+        <span class="text-sm font-semibold text-slate-900 group-hover:text-orange-600 transition">Monster Train 2</span>
+        <span class="text-[11px] text-slate-400 mt-0.5">Deckbuilder</span>
+        <div class="card-arrow mt-2 text-orange-400"><i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i></div>
+      </a>
+
+      <!-- Rhythm Doctor -->
+      <a href="#" class="game-card bg-white border border-slate-200 rounded-2xl p-5 flex flex-col items-center text-center group hover:border-rose-300">
+        <div class="card-icon w-14 h-14 rounded-2xl bg-rose-50 flex items-center justify-center mb-3 text-2xl">🩺</div>
+        <span class="text-sm font-semibold text-slate-900 group-hover:text-rose-600 transition">Rhythm Doctor</span>
+        <span class="text-[11px] text-slate-400 mt-0.5">Rhythm</span>
+        <div class="card-arrow mt-2 text-rose-400"><i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i></div>
+      </a>
+
+      <!-- Subnautica -->
+      <a href="#" class="game-card bg-white border border-slate-200 rounded-2xl p-5 flex flex-col items-center text-center group hover:border-sky-300">
+        <div class="card-icon w-14 h-14 rounded-2xl bg-sky-50 flex items-center justify-center mb-3 text-2xl">🌊</div>
+        <span class="text-sm font-semibold text-slate-900 group-hover:text-sky-600 transition">Subnautica</span>
+        <span class="text-[11px] text-slate-400 mt-0.5">Survival</span>
+        <div class="card-arrow mt-2 text-sky-400"><i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i></div>
+      </a>
+
+      <!-- Dave the Diver -->
+      <a href="#" class="game-card bg-white border border-slate-200 rounded-2xl p-5 flex flex-col items-center text-center group hover:border-cyan-300">
+        <div class="card-icon w-14 h-14 rounded-2xl bg-cyan-50 flex items-center justify-center mb-3 text-2xl">🤿</div>
+        <span class="text-sm font-semibold text-slate-900 group-hover:text-cyan-600 transition">Dave the Diver</span>
+        <span class="text-[11px] text-slate-400 mt-0.5">Adventure Sim</span>
+        <div class="card-arrow mt-2 text-cyan-400"><i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i></div>
+      </a>
+
+      <!-- Outer Wilds -->
+      <a href="#" class="game-card bg-white border border-slate-200 rounded-2xl p-5 flex flex-col items-center text-center group hover:border-indigo-300">
+        <div class="card-icon w-14 h-14 rounded-2xl bg-indigo-50 flex items-center justify-center mb-3 text-2xl">🚀</div>
+        <span class="text-sm font-semibold text-slate-900 group-hover:text-indigo-600 transition">Outer Wilds</span>
+        <span class="text-[11px] text-slate-400 mt-0.5">Exploration</span>
+        <div class="card-arrow mt-2 text-indigo-400"><i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i></div>
+      </a>
+
+      <!-- Inscryption -->
+      <a href="#" class="game-card bg-white border border-slate-200 rounded-2xl p-5 flex flex-col items-center text-center group hover:border-slate-400">
+        <div class="card-icon w-14 h-14 rounded-2xl bg-slate-100 flex items-center justify-center mb-3 text-2xl">🃏</div>
+        <span class="text-sm font-semibold text-slate-900 group-hover:text-slate-700 transition">Inscryption</span>
+        <span class="text-[11px] text-slate-400 mt-0.5">Card Horror</span>
+        <div class="card-arrow mt-2 text-slate-400"><i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i></div>
+      </a>
+
+      <!-- Disco Elysium -->
+      <a href="#" class="game-card bg-white border border-slate-200 rounded-2xl p-5 flex flex-col items-center text-center group hover:border-amber-300">
+        <div class="card-icon w-14 h-14 rounded-2xl bg-amber-50 flex items-center justify-center mb-3 text-2xl">🕵️</div>
+        <span class="text-sm font-semibold text-slate-900 group-hover:text-amber-600 transition">Disco Elysium</span>
+        <span class="text-[11px] text-slate-400 mt-0.5">RPG</span>
+        <div class="card-arrow mt-2 text-amber-400"><i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i></div>
+      </a>
+
+      <!-- Factorio -->
+      <a href="#" class="game-card bg-white border border-slate-200 rounded-2xl p-5 flex flex-col items-center text-center group hover:border-yellow-300">
+        <div class="card-icon w-14 h-14 rounded-2xl bg-yellow-50 flex items-center justify-center mb-3 text-2xl">⚙️</div>
+        <span class="text-sm font-semibold text-slate-900 group-hover:text-yellow-600 transition">Factorio</span>
+        <span class="text-[11px] text-slate-400 mt-0.5">Factory Sim</span>
+        <div class="card-arrow mt-2 text-yellow-500"><i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i></div>
+      </a>
+
+      <!-- Darkest Dungeon -->
+      <a href="#" class="game-card bg-white border border-slate-200 rounded-2xl p-5 flex flex-col items-center text-center group hover:border-red-300">
+        <div class="card-icon w-14 h-14 rounded-2xl bg-red-50 flex items-center justify-center mb-3 text-2xl">🕯️</div>
+        <span class="text-sm font-semibold text-slate-900 group-hover:text-red-600 transition">Darkest Dungeon</span>
+        <span class="text-[11px] text-slate-400 mt-0.5">Tactical RPG</span>
+        <div class="card-arrow mt-2 text-red-400"><i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i></div>
+      </a>
+
+      <!-- More Coming -->
+      <div class="bg-slate-50 border border-dashed border-slate-300 rounded-2xl p-5 flex flex-col items-center text-center">
+        <div class="w-14 h-14 rounded-2xl bg-slate-100 flex items-center justify-center mb-3 text-2xl text-slate-300"><i data-lucide="plus" class="w-6 h-6"></i></div>
+        <span class="text-sm font-medium text-slate-400">More Coming</span>
+        <span class="text-[11px] text-slate-300 mt-0.5">Stay tuned</span>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<footer class="border-t border-slate-200 mt-auto">
+  <div class="max-w-5xl mx-auto px-4 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+    <div class="flex items-center gap-1.5">
+      <div class="w-5 h-5 rounded bg-emerald-600 flex items-center justify-center"><i data-lucide="gamepad-2" class="w-3 h-3 text-white"></i></div>
+      <span>&copy; 2025 IndieGameDeep</span>
+    </div>
+    <span>Just a simple nav page &middot; Links to game guides</span>
+  </div>
+</footer>
+
+<script>lucide.createIcons()</script>
+</body>
+</html>
