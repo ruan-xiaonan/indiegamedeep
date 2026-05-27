@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stardew Valley Guide - Complete Farming, Fishing & Strategy Guide</title>
+<meta name="description" content="Comprehensive Stardew Valley guide covering farming, fishing, villager relationships, and cheat codes. Crop growth cycles, fish locations, and profit optimization.">
+<meta name="keywords" content="Stardew Valley, guide, farming, fishing, crops, fish, villagers, cheat codes, walkthrough, strategy, profit, seasons">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ['Inter', 'sans-serif'],
+        serif: ['Playfair Display', 'serif'],
+      },
+      colors: {
+        brand: { 50:'#ecfdf5',100:'#d1fae5',200:'#a7f3d0',300:'#6ee7b7',400:'#34d399',500:'#10b981',600:'#059669',700:'#047857',800:'#065f46',900:'#064e3b' },
+        sv: { gold:'#f59e0b', red:'#ef4444', blue:'#3b82f6', purple:'#8b5cf6', pink:'#ec4899', orange:'#f97316' }
+      }
+    }
+  }
+}
+</script>
+<style>
+:root {
+  --bg: #FAFAF9; --surface: #FFFFFF; --text: #1C1917; --muted: #78716C;
+  --border: #E7E5E4; --accent: #059669; --accent-light: #d1fae5;
+}
+.dark {
+  --bg: #0c1a14; --surface: #142821; --text: #e8ede9; --muted: #8a9b8f;
+  --border: #2d4a3a; --accent: #34d399; --accent-light: #1a3d2e;
+}
+* { scrollbar-width: thin; scrollbar-color: var(--accent) var(--surface); }
+::selection { background: #064e3b; color: #ecfdf5; }
+body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; transition: background 0.3s, color 0.3s; }
+
+.page { display: none; opacity: 0; transform: translateY(12px); transition: opacity 0.4s ease, transform 0.4s ease; }
+.page.active { display: block; opacity: 1; transform: translateY(0); }
+
+.growth-bar { height: 28px; border-radius: 14px; overflow: hidden; position: relative; }
+.growth-fill { height: 100%; border-radius: 14px; transition: width 1s ease; position: relative; overflow: hidden; }
+.growth-fill::after { content:''; position:absolute; top:0; left:-100%; width:100%; height:100%; background:linear-gradient(90deg,transparent,rgba(255,255,255,0.2),transparent); animation:shimmer 2s infinite; }
+@keyframes shimmer { 100% { left:100%; } }
+
+.fish-card { perspective: 1000px; cursor: pointer; }
+.fish-card-inner { transition: transform 0.6s; transform-style: preserve-3d; position: relative; }
+.fish-card.flipped .fish-card-inner { transform: rotateY(180deg); }
+.fish-card-front, .fish-card-back { backface-visibility: hidden; position: absolute; inset:0; border-radius: 16px; }
+.fish-card-back { transform: rotateY(180deg); }
+
+.spawn-item { animation: spawnPop 0.6s cubic-bezier(0.34,1.56,0.64,1) forwards; }
+@keyframes spawnPop { 0%{transform:scale(0) rotate(-20deg);opacity:0;} 60%{transform:scale(1.15) rotate(5deg);opacity:1;} 100%{transform:scale(1) rotate(0deg);opacity:1;} }
+.spawn-sparkle { animation: sparkle 0.8s ease-out forwards; position:absolute; }
+@keyframes sparkle { 0%{transform:scale(0);opacity:1;} 50%{transform:scale(1.5);opacity:0.7;} 100%{transform:scale(0);opacity:0;} }
+
+.heart-bar { display: flex; gap: 4px; align-items: center; }
+.heart { width: 22px; height: 22px; transition: all 0.3s ease; }
+.heart.filled { color: #ef4444; filter: drop-shadow(0 0 4px rgba(239,68,68,0.4)); }
+.heart.empty { color: #d4d4d4; }
+.dark .heart.empty { color: #3f3f46; }
+
+.bar-chart { display:flex; align-items:flex-end; gap:8px; height:240px; padding:0 8px; }
+.bar-col { display:flex; flex-direction:column; align-items:center; gap:6px; flex:1; min-width:0; }
+.bar-stick { width:100%; border-radius:6px 6px 0 0; transition: height 1s cubic-bezier(0.34,1.56,0.64,1); position:relative; min-height:4px; }
+.bar-label { font-size:10px; color:var(--muted); text-align:center; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:100%; }
+.bar-value { font-size:11px; font-weight:600; color:var(--text); }
+
+.day-indicator { width:32px; height:32px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:500; transition: all 0.3s; border:2px solid var(--border); }
+.day-indicator.grown { background:var(--accent); color:white; border-color:var(--accent); }
+.day-indicator.current { border-color:var(--accent); color:var(--accent); box-shadow:0 0 8px rgba(5,150,105,0.4); }
+.day-indicator.future { color:var(--muted); }
+
+.modal-overlay { position:fixed; inset:0; background:rgba(0,0,0,0.5); backdrop-filter:blur(4px); z-index:100; display:flex; align-items:center; justify-content:center; opacity:0; pointer-events:none; transition:opacity 0.3s; }
+.modal-overlay.show { opacity:1; pointer-events:auto; }
+.modal-content { background:var(--surface); border-radius:16px; padding:32px; max-width:480px; width:90%; transform:scale(0.9); transition:transform 0.3s; box-shadow:0 25px 50px -12px rgba(0,0,0,0.25); }
+.modal-overlay.show .modal-content { transform:scale(1); }
+
+.breadcrumb a { color:var(--muted); text-decoration:none; transition:color 0.15s; }
+.breadcrumb a:hover { color:var(--accent); }
+.breadcrumb span { color:var(--text); font-weight:500; }
+
+.nav-link { position:relative; padding:8px 16px; border-radius:8px; transition:all 0.15s; cursor:pointer; }
+.nav-link:hover { background:var(--accent-light); color:var(--accent); }
+.nav-link.active { background:var(--accent-light); color:var(--accent); font-weight:500; }
+
+.toast { position:fixed; bottom:24px; right:24px; z-index:200; transform:translateY(100px); opacity:0; transition:all 0.4s cubic-bezier(0.34,1.56,0.64,1); }
+.toast.show { transform:translateY(0); opacity:1; }
+
+.rarity-common { background:#e5e7eb; color:#374151; }
+.rarity-uncommon { background:#d1fae5; color:#065f46; }
+.rarity-rare { background:#dbeafe; color:#1e40af; }
+.rarity-legendary { background:#fef3c7; color:#92400e; }
+.dark .rarity-common { background:#374151; color:#d1d5db; }
+.dark .rarity-uncommon { background:#1a3d2e; color:#6ee7b7; }
+.dark .rarity-rare { background:#1e3a5f; color:#93c5fd; }
+.dark .rarity-legendary { background:#4a3520; color:#fbbf24; }
+
+.tab-btn { padding:8px 20px; border-radius:8px; font-size:14px; font-weight:500; transition:all 0.15s; cursor:pointer; border:1px solid transparent; background:transparent; color:var(--muted); }
+.tab-btn:hover { color:var(--text); background:var(--accent-light); }
+.tab-btn.active { background:var(--accent); color:white; border-color:var(--accent); }
+
+@media(max-width:768px) {
+  .bar-chart { height:180px; gap:4px; }
+  .bar-label { font-size:8px; }
+  .day-indicator { width:26px; height:26px; font-size:9px; }
+}
+</style>
+</head>
+<body class="min-h-screen">
+
+<!-- Navigation -->
+<nav class="fixed top-0 left-0 right-0 z-50 h-16 border-b" style="background:var(--surface);border-color:var(--border);backdrop-filter:blur(12px);background:rgba(255,255,255,0.9);">
+  <div class="dark:hidden" style="position:absolute;inset:0;background:rgba(255,255,255,0.9);"></div>
+  <div class="hidden dark:block" style="position:absolute;inset:0;background:rgba(12,26,20,0.9);"></div>
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 h-full flex items-center justify-between">
+    <a onclick="navigate('home')" class="flex items-center gap-2 cursor-pointer group">
+      <div class="w-8 h-8 rounded-lg bg-brand-600 flex items-center justify-center">
+        <i data-lucide="sprout" class="w-5 h-5 text-white"></i>
+      </div>
+      <span class="font-serif font-semibold text-lg" style="color:var(--text)">SV Guide</span>
+    </a>
+    <div class="hidden md:flex items-center gap-1">
+      <button onclick="navigate('farming')" class="nav-link text-sm" data-nav="farming">
+        <span class="flex items-center gap-1.5"><i data-lucide="wheat" class="w-4 h-4"></i>Farming</span>
+      </button>
+      <button onclick="navigate('fishing')" class="nav-link text-sm" data-nav="fishing">
+        <span class="flex items-center gap-1.5"><i data-lucide="fish" class="w-4 h-4"></i>Fishing</span>
+      </button>
+      <button onclick="navigate('villagers')" class="nav-link text-sm" data-nav="villagers">
+        <span class="flex items-center gap-1.5"><i data-lucide="users" class="w-4 h-4"></i>Villagers</span>
+      </button>
+      <button onclick="navigate('cheats')" class="nav-link text-sm" data-nav="cheats">
+        <span class="flex items-center gap-1.5"><i data-lucide="terminal" class="w-4 h-4"></i>Cheats</span>
+      </button>
+      <button onclick="navigate('profits')" class="nav-link text-sm" data-nav="profits">
+        <span class="flex items-center gap-1.5"><i data-lucide="bar-chart-3" class="w-4 h-4"></i>Profits</span>
+      </button>
+    </div>
+    <div class="flex items-center gap-2">
+      <button id="darkToggle" onclick="toggleDark()" class="w-9 h-9 rounded-lg border flex items-center justify-center transition-all hover:border-brand-600" style="border-color:var(--border);background:var(--surface);">
+        <i data-lucide="moon" class="w-4 h-4 dark-hidden" style="color:var(--muted)"></i>
+        <i data-lucide="sun" class="w-4 h-4 light-hidden hidden" style="color:var(--muted)"></i>
+      </button>
+      <button onclick="toggleMobileMenu()" class="md:hidden w-9 h-9 rounded-lg border flex items-center justify-center" style="border-color:var(--border);">
+        <i data-lucide="menu" class="w-4 h-4" style="color:var(--text)"></i>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div id="mobileMenu" class="fixed inset-0 z-40 hidden" style="background:var(--bg);">
+  <div class="pt-20 px-6 flex flex-col gap-2">
+    <button onclick="navigate('home');toggleMobileMenu()" class="text-left py-3 px-4 rounded-lg text-lg font-medium" style="color:var(--text);">🏠 Home</button>
+    <button onclick="navigate('farming');toggleMobileMenu()" class="text-left py-3 px-4 rounded-lg text-lg font-medium" style="color:var(--text);">🌾 Farming</button>
+    <button onclick="navigate('fishing');toggleMobileMenu()" class="text-left py-3 px-4 rounded-lg text-lg font-medium" style="color:var(--text);">🎣 Fishing</button>
+    <button onclick="navigate('villagers');toggleMobileMenu()" class="text-left py-3 px-4 rounded-lg text-lg font-medium" style="color:var(--text);">👥 Villagers</button>
+    <button onclick="navigate('cheats');toggleMobileMenu()" class="text-left py-3 px-4 rounded-lg text-lg font-medium" style="color:var(--text);">💻 Cheats</button>
+    <button onclick="navigate('profits');toggleMobileMenu()" class="text-left py-3 px-4 rounded-lg text-lg font-medium" style="color:var(--text);">📊 Profits</button>
+  </div>
+</div>
+
+<!-- ==================== HOME PAGE ==================== -->
+<section id="page-home" class="page active pt-20 pb-16">
+  <!-- Hero -->
+  <div class="relative overflow-hidden" style="background:linear-gradient(135deg,#064e3b 0%,#047857 50%,#059669 100%);">
+    <div class="absolute inset-0 opacity-10">
+      <div style="position:absolute;top:-20%;right:-10%;width:500px;height:500px;border-radius:50%;background:rgba(255,255,255,0.1);filter:blur(80px);"></div>
+      <div style="position:absolute;bottom:-20%;left:-10%;width:400px;height:400px;border-radius:50%;background:rgba(255,255,255,0.08);filter:blur(60px);"></div>
+    </div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 py-20 md:py-32 text-center">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white/80 text-xs font-medium tracking-wide uppercase mb-6">
+        <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Updated for v1.6
+      </div>
+      <h1 class="font-serif text-4xl md:text-6xl lg:text-7xl font-400 text-white tracking-tight leading-[1.1] mb-6">
+        Stardew Valley<br><span class="italic" style="color:#a7f3d0;">Complete Guide</span>
+      </h1>
+      <p class="text-white/70 text-base md:text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
+        Master every aspect of Pelican Town life — from crop optimization and legendary fish to villager friendships and secret cheat codes.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <button onclick="navigate('farming')" class="px-8 py-3 bg-white text-brand-900 rounded-full font-medium text-sm hover:bg-brand-50 transition-all shadow-lg">
+          Start Farming Guide
+        </button>
+        <button onclick="navigate('fishing')" class="px-8 py-3 border border-white/30 text-white rounded-full font-medium text-sm hover:bg-white/10 transition-all">
+          Browse Fish Database
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Category Grid -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-16">
+    <div class="text-center mb-12">
+      <h2 class="font-serif text-3xl md:text-4xl tracking-tight mb-3" style="color:var(--text)">Guide Sections</h2>
+      <p style="color:var(--muted)" class="text-base">Select a category to dive deeper</p>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Farming Card -->
+      <div onclick="navigate('farming')" class="group cursor-pointer rounded-2xl border p-0 overflow-hidden transition-all hover:shadow-lg hover:border-brand-300" style="background:var(--surface);border-color:var(--border);">
+        <div class="relative h-48 overflow-hidden">
+          <img src="https://picsum.photos/seed/sv-farm-field/600/400.jpg" alt="Farming" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+          <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(28,25,23,0.6),transparent)"></div>
+          <div class="absolute bottom-4 left-4">
+            <span class="px-3 py-1 rounded-full bg-brand-500 text-white text-xs font-medium">5 Guides</span>
+          </div>
+        </div>
+        <div class="p-6">
+          <div class="flex items-center gap-2 mb-2">
+            <div class="w-8 h-8 rounded-lg bg-brand-100 flex items-center justify-center"><i data-lucide="wheat" class="w-4 h-4 text-brand-600"></i></div>
+            <h3 class="font-serif text-xl font-semibold" style="color:var(--text)">Farming</h3>
+          </div>
+          <p class="text-sm leading-relaxed" style="color:var(--muted)">Crop growth cycles, seasonal planting guides, and profit optimization strategies.</p>
+          <div class="flex items-center gap-1 mt-4 text-brand-600 text-sm font-medium group-hover:gap-2 transition-all">
+            Explore <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </div>
+        </div>
+      </div>
+      <!-- Fishing Card -->
+      <div onclick="navigate('fishing')" class="group cursor-pointer rounded-2xl border p-0 overflow-hidden transition-all hover:shadow-lg hover:border-blue-300" style="background:var(--surface);border-color:var(--border);">
+        <div class="relative h-48 overflow-hidden">
+          <img src="https://picsum.photos/seed/sv-fishing-lake/600/400.jpg" alt="Fishing" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+          <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(28,25,23,0.6),transparent)"></div>
+          <div class="absolute bottom-4 left-4">
+            <span class="px-3 py-1 rounded-full bg-blue-500 text-white text-xs font-medium">4 Seasons</span>
+          </div>
+        </div>
+        <div class="p-6">
+          <div class="flex items-center gap-2 mb-2">
+            <div class="w-8 h-8 rounded-lg bg-blue-100 flex items-center justify-center"><i data-lucide="fish" class="w-4 h-4 text-blue-600"></i></div>
+            <h3 class="font-serif text-xl font-semibold" style="color:var(--text)">Fishing</h3>
+          </div>
+          <p class="text-sm leading-relaxed" style="color:var(--muted)">Complete fish catalog with rarity, location, weather, and time requirements.</p>
+          <div class="flex items-center gap-1 mt-4 text-blue-600 text-sm font-medium group-hover:gap-2 transition-all">
+            Explore <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </div>
+        </div>
+      </div>
+      <!-- Villagers Card -->
+      <div onclick="navigate('villagers')" class="group cursor-pointer rounded-2xl border p-0 overflow-hidden transition-all hover:shadow-lg hover:border-pink-300" style="background:var(--surface);border-color:var(--border);">
+        <div class="relative h-48 overflow-hidden">
+          <img src="https://picsum.photos/seed/sv-village-people/600/400.jpg" alt="Villagers" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+          <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(28,25,23,0.6),transparent)"></div>
+          <div class="absolute bottom-4 left-4">
+            <span class="px-3 py-1 rounded-full bg-pink-500 text-white text-xs font-medium">12 NPCs</span>
+          </div>
+        </div>
+        <div class="p-6">
+          <div class="flex items-center gap-2 mb-2">
+            <div class="w-8 h-8 rounded-lg bg-pink-100 flex items-center justify-center"><i data-lucide="users" class="w-4 h-4 text-pink-600"></i></div>
+            <h3 class="font-serif text-xl font-semibold" style="color:var(--text)">Villagers</h3>
+          </div>
+          <p class="text-sm leading-relaxed" style="color:var(--muted)">Friendship tracking, gift preferences, and heart event guides for every NPC.</p>
+          <div class="flex items-center gap-1 mt-4 text-pink-600 text-sm font-medium group-hover:gap-2 transition-all">
+            Explore <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </div>
+        </div>
+      </div>
+      <!-- Cheats Card -->
+      <div onclick="navigate('cheats')" class="group cursor-pointer rounded-2xl border p-0 overflow-hidden transition-all hover:shadow-lg hover:border-amber-300" style="background:var(--surface);border-color:var(--border);">
+        <div class="relative h-48 overflow-hidden">
+          <img src="https://picsum.photos/seed/sv-console-code/600/400.jpg" alt="Cheats" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+          <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(28,25,23,0.6),transparent)"></div>
+          <div class="absolute bottom-4 left-4">
+            <span class="px-3 py-1 rounded-full bg-amber-500 text-white text-xs font-medium">20+ Codes</span>
+          </div>
+        </div>
+        <div class="p-6">
+          <div class="flex items-center gap-2 mb-2">
+            <div class="w-8 h-8 rounded-lg bg-amber-100 flex items-center justify-center"><i data-lucide="terminal" class="w-4 h-4 text-amber-600"></i></div>
+            <h3 class="font-serif text-xl font-semibold" style="color:var(--text)">Cheat Codes</h3>
+          </div>
+          <p class="text-sm leading-relaxed" style="color:var(--muted)">Item spawn codes, name tricks, and debug commands with live preview simulator.</p>
+          <div class="flex items-center gap-1 mt-4 text-amber-600 text-sm font-medium group-hover:gap-2 transition-all">
+            Explore <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </div>
+        </div>
+      </div>
+      <!-- Profits Card -->
+      <div onclick="navigate('profits')" class="group cursor-pointer rounded-2xl border p-0 overflow-hidden transition-all hover:shadow-lg hover:border-purple-300" style="background:var(--surface);border-color:var(--border);">
+        <div class="relative h-48 overflow-hidden">
+          <img src="https://picsum.photos/seed/sv-gold-chart/600/400.jpg" alt="Profits" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+          <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(28,25,23,0.6),transparent)"></div>
+          <div class="absolute bottom-4 left-4">
+            <span class="px-3 py-1 rounded-full bg-purple-500 text-white text-xs font-medium">Charts</span>
+          </div>
+        </div>
+        <div class="p-6">
+          <div class="flex items-center gap-2 mb-2">
+            <div class="w-8 h-8 rounded-lg bg-purple-100 flex items-center justify-center"><i data-lucide="bar-chart-3" class="w-4 h-4 text-purple-600"></i></div>
+            <h3 class="font-serif text-xl font-semibold" style="color:var(--text)">Profit Analysis</h3>
+          </div>
+          <p class="text-sm leading-relaxed" style="color:var(--muted)">Seasonal crop profit comparisons, gold-per-day analysis, and investment ROI.</p>
+          <div class="flex items-center gap-1 mt-4 text-purple-600 text-sm font-medium group-hover:gap-2 transition-all">
+            Explore <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </div>
+        </div>
+      </div>
+      <!-- Quick Stats Card -->
+      <div class="rounded-2xl border p-6 flex flex-col justify-center" style="background:var(--surface);border-color:var(--border);">
+        <h3 class="font-serif text-xl font-semibold mb-4" style="color:var(--text)">Quick Stats</h3>
+        <div class="space-y-3">
+          <div class="flex justify-between items-center"><span class="text-sm" style="color:var(--muted)">Total Crops</span><span class="font-semibold text-brand-600">40+</span></div>
+          <div class="flex justify-between items-center"><span class="text-sm" style="color:var(--muted)">Fish Species</span><span class="font-semibold text-blue-600">83</span></div>
+          <div class="flex justify-between items-center"><span class="text-sm" style="color:var(--muted)">Villagers</span><span class="font-semibold text-pink-600">35</span></div>
+          <div class="flex justify-between items-center"><span class="text-sm" style="color:var(--muted)">Cheat Codes</span><span class="font-semibold text-amber-600">20+</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FARMING PAGE ==================== -->
+<section id="page-farming" class="page pt-20 pb-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-8">
+    <!-- Breadcrumb -->
+    <div class="breadcrumb flex items-center gap-2 text-sm mb-8">
+      <a onclick="navigate('home')">Home</a><span style="color:var(--muted)">/</span><span>Farming</span>
+    </div>
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8">
+      <div>
+        <h1 class="font-serif text-3xl md:text-4xl tracking-tight" style="color:var(--text)">Farming Guide</h1>
+        <p class="mt-2" style="color:var(--muted)">Crop growth cycles and seasonal planting strategies</p>
+      </div>
+      <button onclick="navigate('profits')" class="px-5 py-2.5 rounded-lg bg-brand-600 text-white text-sm font-medium hover:bg-brand-700 transition-all flex items-center gap-2 self-start">
+        <i data-lucide="bar-chart-3" class="w-4 h-4"></i> View Profit Charts
+      </button>
+    </div>
+
+    <!-- Season Tabs -->
+    <div class="flex gap-2 mb-8 flex-wrap">
+      <button class="tab-btn active" onclick="switchFarmSeason('spring',this)">🌷 Spring</button>
+      <button class="tab-btn" onclick="switchFarmSeason('summer',this)">☀️ Summer</button>
+      <button class="tab-btn" onclick="switchFarmSeason('fall',this)">🍂 Fall</button>
+      <button class="tab-btn" onclick="switchFarmSeason('winter',this)">❄️ Winter</button>
+    </div>
+
+    <!-- Crop Grid -->
+    <div id="cropGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+
+    <!-- Growth Detail Panel -->
+    <div id="growthDetail" class="mt-8 rounded-2xl border p-6 hidden" style="background:var(--surface);border-color:var(--border);">
+      <div class="flex items-center justify-between mb-4">
+        <h3 id="growthDetailTitle" class="font-serif text-xl font-semibold" style="color:var(--text)"></h3>
+        <button onclick="closeGrowthDetail()" class="w-8 h-8 rounded-lg flex items-center justify-center hover:bg-stone-100 dark:hover:bg-zinc-800 transition"><i data-lucide="x" class="w-4 h-4" style="color:var(--muted)"></i></button>
+      </div>
+      <div id="growthDetailContent"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FISHING PAGE ==================== -->
+<section id="page-fishing" class="page pt-20 pb-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-8">
+    <div class="breadcrumb flex items-center gap-2 text-sm mb-8">
+      <a onclick="navigate('home')">Home</a><span style="color:var(--muted)">/</span><span>Fishing</span>
+    </div>
+    <h1 class="font-serif text-3xl md:text-4xl tracking-tight mb-2" style="color:var(--text)">Fish Catalog</h1>
+    <p class="mb-8" style="color:var(--muted)">Click any fish card to view detailed catch information</p>
+
+    <div class="flex gap-2 mb-8 flex-wrap">
+      <button class="tab-btn active" onclick="switchFishSeason('spring',this)">🌷 Spring</button>
+      <button class="tab-btn" onclick="switchFishSeason('summer',this)">☀️ Summer</button>
+      <button class="tab-btn" onclick="switchFishSeason('fall',this)">🍂 Fall</button>
+      <button class="tab-btn" onclick="switchFishSeason('winter',this)">❄️ Winter</button>
+    </div>
+
+    <div id="fishGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5"></div>
+  </div>
+</section>
+
+<!-- ==================== VILLAGERS PAGE ==================== -->
+<section id="page-villagers" class="page pt-20 pb-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-8">
+    <div class="breadcrumb flex items-center gap-2 text-sm mb-8">
+      <a onclick="navigate('home')">Home</a><span style="color:var(--muted)">/</span><span>Villagers</span>
+    </div>
+    <h1 class="font-serif text-3xl md:text-4xl tracking-tight mb-2" style="color:var(--text)">Villager Relationships</h1>
+    <p class="mb-8" style="color:var(--muted)">Friendship progress and gift preferences — click hearts to adjust levels</p>
+    <div id="villagerGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+  </div>
+</section>
+
+<!-- ==================== CHEATS PAGE ==================== -->
+<section id="page-cheats" class="page pt-20 pb-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-8">
+    <div class="breadcrumb flex items-center gap-2 text-sm mb-8">
+      <a onclick="navigate('home')">Home</a><span style="color:var(--muted)">/</span><span>Cheat Codes</span>
+    </div>
+    <h1 class="font-serif text-3xl md:text-4xl tracking-tight mb-2" style="color:var(--text)">Cheat Code Simulator</h1>
+    <p class="mb-8" style="color:var(--muted)">Enter item codes to simulate spawning — visual preview only, no game data modified</p>
+
+    <!-- Input Area -->
+    <div class="rounded-2xl border p-6 mb-8" style="background:var(--surface);border-color:var(--border);">
+      <div class="flex flex-col sm:flex-row gap-4">
+        <div class="flex-1">
+          <label class="block text-sm font-medium mb-2" style="color:var(--text)">Item Code or Name</label>
+          <input id="cheatInput" type="text" placeholder="e.g. 74 or iridium_bar" class="w-full px-4 py-3 rounded-lg border text-sm focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition" style="background:var(--bg);border-color:var(--border);color:var(--text);" onkeydown="if(event.key==='Enter')spawnItem()">
+        </div>
+        <div class="flex items-end">
+          <button onclick="spawnItem()" class="px-6 py-3 bg-brand-600 text-white rounded-lg font-medium text-sm hover:bg-brand-700 transition-all flex items-center gap-2 whitespace-nowrap">
+            <i data-lucide="terminal" class="w-4 h-4"></i> Spawn Item
+          </button>
+        </div>
+      </div>
+      <p class="text-xs mt-3" style="color:var(--muted)">Try: 74, 92, 378, 807, iridium_bar, diamond, prismatic_shard</p>
+
+      <!-- Spawn Result Area -->
+      <div id="spawnResult" class="mt-6 min-h-[100px] rounded-xl border-2 border-dashed flex items-center justify-center relative overflow-hidden" style="border-color:var(--border);background:var(--bg);">
+        <p class="text-sm" style="color:var(--muted)">Item will appear here</p>
+      </div>
+    </div>
+
+    <!-- Quick Spawn Buttons -->
+    <div class="rounded-2xl border p-6" style="background:var(--surface);border-color:var(--border);">
+      <h3 class="font-serif text-lg font-semibold mb-4" style="color:var(--text)">Quick Spawn</h3>
+      <div id="quickSpawnGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3"></div>
+    </div>
+
+    <!-- Code Reference -->
+    <div class="rounded-2xl border p-6 mt-6" style="background:var(--surface);border-color:var(--border);">
+      <h3 class="font-serif text-lg font-semibold mb-4" style="color:var(--text)">Name Trick Codes</h3>
+      <p class="text-sm mb-4" style="color:var(--muted)">Name your character or animals with these IDs to spawn items when your name appears in dialogue:</p>
+      <div class="grid sm:grid-cols-2 gap-3">
+        <div class="flex items-center gap-3 p-3 rounded-lg" style="background:var(--bg);">
+          <code class="px-2 py-1 rounded bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 text-xs font-mono">[74]</code>
+          <span class="text-sm" style="color:var(--text)">Prismatic Shard</span>
+        </div>
+        <div class="flex items-center gap-3 p-3 rounded-lg" style="background:var(--bg);">
+          <code class="px-2 py-1 rounded bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 text-xs font-mono">[445]</code>
+          <span class="text-sm" style="color:var(--text)">Rabbit's Foot</span>
+        </div>
+        <div class="flex items-center gap-3 p-3 rounded-lg" style="background:var(--bg);">
+          <code class="px-2 py-1 rounded bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 text-xs font-mono">[72]</code>
+          <span class="text-sm" style="color:var(--text)">Diamond</span>
+        </div>
+        <div class="flex items-center gap-3 p-3 rounded-lg" style="background:var(--bg);">
+          <code class="px-2 py-1 rounded bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 text-xs font-mono">[768]</code>
+          <span class="text-sm" style="color:var(--text)">Qi Gem</span>
+        </div>
+        <div class="flex items-center gap-3 p-3 rounded-lg" style="background:var(--bg);">
+          <code class="px-2 py-1 rounded bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 text-xs font-mono">[378]</code>
+          <span class="text-sm" style="color:var(--text)">Iridium Ore</span>
+        </div>
+        <div class="flex items-center gap-3 p-3 rounded-lg" style="background:var(--bg);">
+          <code class="px-2 py-1 rounded bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 text-xs font-mono">[807]</code>
+          <span class="text-sm" style="color:var(--text)">Iridium Bar</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== PROFITS PAGE ==================== -->
+<section id="page-profits" class="page pt-20 pb-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-8">
+    <div class="breadcrumb flex items-center gap-2 text-sm mb-8">
+      <a onclick="navigate('home')">Home</a><span style="color:var(--muted)">/</span><a onclick="navigate('farming')">Farming</a><span style="color:var(--muted)">/</span><span>Profit Analysis</span>
+    </div>
+    <h1 class="font-serif text-3xl md:text-4xl tracking-tight mb-2" style="color:var(--text)">Seasonal Profit Analysis</h1>
+    <p class="mb-8" style="color:var(--muted)">Gold per day comparison for all crops by season</p>
+
+    <div class="flex gap-2 mb-8 flex-wrap">
+      <button class="tab-btn active" onclick="switchProfitSeason('spring',this)">🌷 Spring</button>
+      <button class="tab-btn" onclick="switchProfitSeason('summer',this)">☀️ Summer</button>
+      <button class="tab-btn" onclick="switchProfitSeason('fall',this)">🍂 Fall</button>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-6">
+      <!-- Bar Chart -->
+      <div class="rounded-2xl border p-6" style="background:var(--surface);border-color:var(--border);">
+        <h3 class="font-serif text-lg font-semibold mb-1" style="color:var(--text)">Gold Per Day</h3>
+        <p class="text-xs mb-6" style="color:var(--muted)">Profit divided by total growth days (no fertilizer)</p>
+        <div id="profitChart" class="bar-chart"></div>
+      </div>
+      <!-- Table -->
+      <div class="rounded-2xl border p-6" style="background:var(--surface);border-color:var(--border);">
+        <h3 class="font-serif text-lg font-semibold mb-4" style="color:var(--text)">Detailed Breakdown</h3>
+        <div class="overflow-x-auto">
+          <table id="profitTable" class="w-full text-sm">
+            <thead>
+              <tr style="border-bottom:1px solid var(--border);">
+                <th class="text-left py-2 font-medium" style="color:var(--muted)">Crop</th>
+                <th class="text-right py-2 font-medium" style="color:var(--muted)">Buy</th>
+                <th class="text-right py-2 font-medium" style="color:var(--muted)">Sell</th>
+                <th class="text-right py-2 font-medium" style="color:var(--muted)">Days</th>
+                <th class="text-right py-2 font-medium" style="color:var(--muted)">g/Day</th>
+              </tr>
+            </thead>
+            <tbody id="profitTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Fish Detail Modal -->
+<div id="fishModal" class="modal-overlay" onclick="if(event.target===this)closeFishModal()">
+  <div class="modal-content">
+    <div class="flex items-center justify-between mb-4">
+      <h3 id="fishModalTitle" class="font-serif text-xl font-semibold" style="color:var(--text)"></h3>
+      <button onclick="closeFishModal()" class="w-8 h-8 rounded-lg flex items-center justify-center hover:bg-stone-100 dark:hover:bg-zinc-800 transition"><i data-lucide="x" class="w-4 h-4" style="color:var(--muted)"></i></button>
+    </div>
+    <div id="fishModalBody"></div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div id="toast" class="toast">
+  <div class="flex items-center gap-3 px-5 py-3 rounded-xl shadow-lg" style="background:var(--surface);border:1px solid var(--border);">
+    <i data-lucide="check-circle" class="w-5 h-5 text-brand-500"></i>
+    <span id="toastText" class="text-sm font-medium" style="color:var(--text)"></span>
+  </div>
+</div>
+
+<script>
+// ===================== DATA =====================
+const cropData = {
+  spring: [
+    { name:'Parsnip', days:4, buy:20, sell:35, emoji:'🥕', regrow:0, desc:'Quick turnaround starter crop.' },
+    { name:'Potato', days:6, buy:50, sell:80, emoji:'🥔', regrow:0, desc:'Chance of harvesting multiple potatoes.' },
+    { name:'Cauliflower', days:12, buy:80, sell:175, emoji:'🥦', regrow:0, desc:'High value but slow growth.' },
+    { name:'Green Bean', days:10, buy:60, sell:40, emoji:'🫛', regrow:3, desc:'Regrows every 3 days after maturity.' },
+    { name:'Kale', days:6, buy:70, sell:110, emoji:'🥬', regrow:0, desc:'Reliable mid-tier spring crop.' },
+    { name:'Strawberry', days:8, buy:100, sell:120, emoji:'🍓', regrow:2, desc:'Best spring crop. Buy at Egg Festival.' },
+    { name:'Rhubarb', days:13, buy:100, sell:220, emoji:'🍒', regrow:0, desc:'Only from Oasis shop. High profit.' },
+    { name:'Rice Shoot', days:8, buy:40, sell:30, emoji:'🌾', regrow:0, desc:'Grows faster near water (paddy).' },
+  ],
+  summer: [
+    { name:'Melon', days:12, buy:80, sell:250, emoji:'🍈', regrow:0, desc:'Star of summer. Great for preserves.' },
+    { name:'Blueberry', days:13, buy:80, sell:150, emoji:'🫐', regrow:4, desc:'Harvests 3 berries. Amazing per-harvest value.' },
+    { name:'Corn', days:14, buy:150, sell:50, emoji:'🌽', regrow:4, desc:'Grows through summer AND fall.' },
+    { name:'Tomato', days:11, buy:50, sell:60, emoji:'🍅', regrow:4, desc:'Reliable regrowing summer crop.' },
+    { name:'Hot Pepper', days:5, buy:40, sell:40, emoji:'🌶️', regrow:3, desc:'Fast regrow cycle. Great for salsa.' },
+    { name:'Red Cabbage', days:9, buy:100, sell:260, emoji:'🥬', regrow:0, desc:'Year 2+ only. Excellent profit.' },
+    { name:'Starfruit', days:13, buy:400, sell:750, emoji:'⭐', regrow:0, desc:'Most profitable regular crop.' },
+    { name:'Radish', days:6, buy:40, sell:90, emoji:'🔴', regrow:0, desc:'Quick grower with decent returns.' },
+  ],
+  fall: [
+    { name:'Pumpkin', days:13, buy:100, sell:320, emoji:'🎃', regrow:0, desc:'Fall king crop. High profit margin.' },
+    { name:'Cranberry', days:7, buy:240, sell:130, emoji:'🫐', regrow:5, desc:'Harvests 2 berries. Long-term investment.' },
+    { name:'Artichoke', days:8, buy:30, sell:160, emoji:'🌿', regrow:0, desc:'Year 2+. Surprisingly profitable.' },
+    { name:'Eggplant', days:5, buy:20, sell:60, emoji:'🍆', regrow:5, desc:'Cheap regrower. Good filler crop.' },
+    { name:'Grape', days:10, buy:60, sell:80, emoji:'🍇', regrow:3, desc:'Regrows for steady income.' },
+    { name:'Sweet Gem Berry', days:24, buy:1000, sell:3000, emoji:'💎', regrow:0, desc:'Rare seed crop. Massive single harvest.' },
+    { name:'Bok Choy', days:4, buy:50, sell:80, emoji:'🥬', regrow:0, desc:'Fast fall crop for quick returns.' },
+    { name:'Amaranth', days:7, buy:70, sell:150, emoji:'🌺', regrow:0, desc:'Good mid-season option.' },
+  ],
+  winter: [
+    { name:'Powdermelon', days:10, buy:20, sell:60, emoji:'❄️', regrow:0, desc:'Only winter outdoor crop (1.6 update).' },
+  ]
+};
+
+const fishData = {
+  spring: [
+    { name:'Catfish', rarity:'Hard', price:200, location:'River (Forest)', weather:'Rain', time:'6am–12am', emoji:'🐱' },
+    { name:'Eel', rarity:'Hard', price:85, location:'Ocean', weather:'Rain', time:'4pm–2am', emoji:'🐍' },
+    { name:'Flounder', rarity:'Medium', price:100, location:'Ocean', weather:'Any', time:'6am–8pm', emoji:'🐟' },
+    { name:'Largemouth Bass', rarity:'Easy', price:75, location:'Mountain Lake', weather:'Any', time:'6am–7pm', emoji:'🐟' },
+    { name:'Rainbow Trout', rarity:'Medium', price:65, location:'River', weather:'Sunny', time:'6am–7pm', emoji:'🌈' },
+    { name:'Walleye', rarity:'Medium', price:105, location:'River', weather:'Rain', time:'12pm–12am', emoji:'🐟' },
+  ],
+  summer: [
+    { name:'Pufferfish', rarity:'Very Hard', price:200, location:'Ocean', weather:'Sunny', time:'12pm–4pm', emoji:'🐡' },
+    { name:'Red Snapper', rarity:'Medium', price:50, location:'Ocean', weather:'Rain', time:'6am–7pm', emoji:'🐟' },
+    { name:'Tilapia', rarity:'Medium', price:75, location:'Ocean', weather:'Any', time:'6am–2pm', emoji:'🐟' },
+    { name:'Catfish', rarity:'Hard', price:200, location:'River (Forest)', weather:'Rain', time:'6am–12am', emoji:'🐱' },
+    { name:'Octopus', rarity:'Hard', price:150, location:'Ocean', weather:'Any', time:'6am–1pm', emoji:'🐙' },
+    { name:'Super Cucumber', rarity:'Hard', price:250, location:'Ocean', weather:'Any', time:'6pm–2am', emoji:'🥒' },
+  ],
+  fall: [
+    { name:'Tiger Trout', rarity:'Hard', price:150, location:'River', weather:'Any', time:'6am–7pm', emoji:'🐅' },
+    { name:'Salmon', rarity:'Medium', price:75, location:'River', weather:'Any', time:'6am–7pm', emoji:'🐟' },
+    { name:'Walleye', rarity:'Medium', price:105, location:'River', weather:'Rain', time:'12pm–12am', emoji:'🐟' },
+    { name:'Albacore', rarity:'Medium', price:75, location:'Ocean', weather:'Any', time:'6am–11am / 6pm–2am', emoji:'🐟' },
+    { name:'Dorado', rarity:'Hard', price:150, location:'River (Forest)', weather:'Any', time:'6am–7pm', emoji:'🐟' },
+  ],
+  winter: [
+    { name:'Squid', rarity:'Medium', price:80, location:'Ocean', weather:'Any', time:'6pm–2am', emoji:'🦑' },
+    { name:'Perch', rarity:'Easy', price:55, location:'Mountain Lake / River', weather:'Any', time:'6am–7pm', emoji:'🐟' },
+    { name:'Lingcod', rarity:'Hard', price:120, location:'Mountain Lake', weather:'Any', time:'6am–7pm', emoji:'🐟' },
+    { name:'Midnight Carp', rarity:'Medium', price:150, location:'Mountain Lake', weather:'Any', time:'10pm–2am', emoji:'🐟' },
+    { name:'Tuna', rarity:'Medium', price:100, location:'Ocean', weather:'Any', time:'6am–7pm', emoji:'🐟' },
+  ]
+};
+
+const villagerData = [
+  { name:'Abigail', role:'Bachelorette', hearts:8, emoji:'💜', loves:['Amethyst','Chocolate Cake','Pumpkin'] },
+  { name:'Alex', role:'Bachelor', hearts:4, emoji:'⚽', loves:['Complete Breakfast','Salmon Dinner'] },
+  { name:'Elliott', role:'Bachelor', hearts:6, emoji:'📖', loves:['Pomegranate','Crab Cakes','Lobster'] },
+  { name:'Emily', role:'Bachelorette', hearts:10, emoji:'💎', loves:['Cloth','Survival Burger','Ruby'] },
+  { name:'Haley', role:'Bachelorette', hearts:2, emoji:'📸', loves:['Pink Cake','Sunflower','Coconut'] },
+  { name:'Harvey', role:'Bachelor', hearts:5, emoji:'🩺', loves:['Coffee','Super Meal','Truffle Oil'] },
+  { name:'Leah', role:'Bachelorette', hearts:7, emoji:'🎨', loves:['Goat Cheese','Poppyseed Muffin','Salad'] },
+  { name:'Sam', role:'Bachelor', hearts:3, emoji:'🎸', loves:['Pizza','Maple Bar','Cactus Fruit'] },
+  { name:'Sebastian', role:'Bachelor', hearts:9, emoji:'🖥️', loves:['Frozen Tear','Obsidian','Pumpkin Soup'] },
+  { name:'Maru', role:'Bachelorette', hearts:6, emoji:'🔬', loves:['Cauliflower','Strawberry','Gold Bar'] },
+  { name:'Penny', role:'Bachelorette', hearts:8, emoji:'📚', loves:['Poppy','Melon','Red Plate'] },
+  { name:'Shane', role:'Bachelor', hearts:5, emoji:'🍺', loves:['Beer','Hot Pepper','Pizza'] },
+];
+
+const cheatItems = {
+  '74':{name:'Prismatic Shard',emoji:'🌈',color:'#8b5cf6',desc:'A mysterious iridescent shard.'},
+  '72':{name:'Diamond',emoji:'💎',color:'#60a5fa',desc:'The most rare and valuable of gems.'},
+  '378':{name:'Iridium Ore',emoji:'🪨',color:'#a78bfa',desc:'A rare and valuable ore.'},
+  '807':{name:'Iridium Bar',emoji:'🔶',color:'#f59e0b',desc:'A refined bar of pure iridium.'},
+  '92':{name:'Starfruit',emoji:'⭐',color:'#fbbf24',desc:'An extremely juicy fruit.'},
+  '445':{name:"Rabbit's Foot",emoji:'🐰',color:'#f472b6',desc:'Some say it brings good luck.'},
+  '768':{name:'Qi Gem',emoji:'💠',color:'#22d3ee',desc:'A gem radiating mysterious energy.'},
+  '276':{name:'Ancient Fruit',emoji:'🍇',color:'#a855f7',desc:'It still smells like old-world spices.'},
+  '349':{name:'Pumpkin',emoji:'🎃',color:'#f97316',desc:'Can be carved or made into pie.'},
+  '256':{name:'Blueberry',emoji:'🫐',color:'#3b82f6',desc:'Holds a mild, sweet flavor.'},
+  '417':{name:'Truffle',emoji:'🍄',color:'#a16207',desc:'A prized foraged mushroom.'},
+  '418':{name:'Iridium Quality Items',emoji:'✨',color:'#818cf8',desc:'The highest quality grade.'},
+  'iridium_bar':{name:'Iridium Bar',emoji:'🔶',color:'#f59e0b',desc:'A refined bar of pure iridium.'},
+  'diamond':{name:'Diamond',emoji:'💎',color:'#60a5fa',desc:'The most rare and valuable of gems.'},
+  'prismatic_shard':{name:'Prismatic Shard',emoji:'🌈',color:'#8b5cf6',desc:'A mysterious iridescent shard.'},
+  'starfruit':{name:'Starfruit',emoji:'⭐',color:'#fbbf24',desc:'An extremely juicy fruit.'},
+  'ancient_fruit':{name:'Ancient Fruit',emoji:'🍇',color:'#a855f7',desc:'It still smells like old-world spices.'},
+  'truffle':{name:'Truffle',emoji:'🍄',color:'#a16207',desc:'A prized foraged mushroom.'},
+  'pumpkin':{name:'Pumpkin',emoji:'🎃',color:'#f97316',desc:'Can be carved or made into pie.'},
+  'qi_gem':{name:'Qi Gem',emoji:'💠',color:'#22d3ee',desc:'A gem radiating mysterious energy.'},
+};
+
+const quickSpawnItems = ['74','72','807','92','378','445','768','276','349','256','417','418'];
+
+// ===================== NAVIGATION =====================
+let currentPage = 'home';
+
+function navigate(page) {
+  document.querySelectorAll('.page').forEach(p => { p.classList.remove('active'); });
+  currentPage = page;
+  const target = document.getElementById('page-' + page);
+  if (target) {
+    setTimeout(() => { target.classList.add('active'); window.scrollTo({top:0,behavior:'smooth'}); }, 50);
+  }
+  // Update nav active state
+  document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+  const activeNav = document.querySelector(`[data-nav="${page}"]`);
+  if (activeNav) activeNav.classList.add('active');
+  // Init page content
+  if (page === 'farming') switchFarmSeason('spring');
+  if (page === 'fishing') switchFishSeason('spring');
+  if (page === 'villagers') renderVillagers();
+  if (page === 'cheats') renderQuickSpawn();
+  if (page === 'profits') switchProfitSeason('spring');
+  lucide.createIcons();
+}
+
+function toggleMobileMenu() {
+  const m = document.getElementById('mobileMenu');
+  m.classList.toggle('hidden');
+}
+
+// ===================== DARK MODE =====================
+function toggleDark() {
+  document.documentElement.classList.toggle('dark');
+  const isDark = document.documentElement.classList.contains('dark');
+  localStorage.setItem('sv-dark', isDark ? '1' : '0');
+  document.querySelectorAll('.dark-hidden').forEach(e => e.style.display = isDark ? 'none' : '');
+  document.querySelectorAll('.light-hidden').forEach(e => e.style.display = isDark ? '' : 'none');
+}
+// Init dark mode
+if (localStorage.getItem('sv-dark') === '1' || (!localStorage.getItem('sv-dark') && window.matchMedia('(prefers-color-scheme:dark)').matches)) {
+  document.documentElement.classList.add('dark');
+  document.querySelectorAll('.dark-hidden').forEach(e => e.style.display = 'none');
+  document.querySelectorAll('.light-hidden').forEach(e => e.style.display = '');
+}
+
+// ===================== FARMING =====================
+let farmSeason = 'spring';
+function switchFarmSeason(season, btn) {
+  farmSeason = season;
+  document.querySelectorAll('#page-farming .tab-btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  else document.querySelector(`#page-farming .tab-btn:first-child`)?.classList.add('active');
+  closeGrowthDetail();
+  renderCrops();
+}
+
+function renderCrops() {
+  const grid = document.getElementById('cropGrid');
+  const crops = cropData[farmSeason] || [];
+  grid.innerHTML = crops.map((c, i) => `
+    <div class="rounded-2xl border p-5 cursor-pointer transition-all hover:shadow-lg hover:border-brand-300 group" style="background:var(--surface);border-color:var(--border);" onclick="showGrowthDetail('${farmSeason}',${i})">
+      <div class="flex items-center justify-between mb-3">
+        <div class="flex items-center gap-3">
+          <span class="text-3xl">${c.emoji}</span>
+          <div>
+            <h4 class="font-serif font-semibold text-base" style="color:var(--text)">${c.name}</h4>
+            <span class="text-xs" style="color:var(--muted)">${c.days} day${c.days>1?'s':''}${c.regrow?' · Regrows '+c.regrow+'d':''}</span>
+          </div>
+        </div>
+        <span class="text-sm font-semibold text-brand-600">${c.sell}g</span>
+      </div>
+      <div class="growth-bar mb-2" style="background:var(--bg);">
+        <div class="growth-fill" style="width:100%;background:linear-gradient(90deg,#059669,#10b981);"></div>
+      </div>
+      <div class="flex justify-between text-xs" style="color:var(--muted)">
+        <span>Seed: ${c.buy}g</span>
+        <span>Profit: ${c.sell - c.buy}g</span>
+      </div>
+      <p class="text-xs mt-3 leading-relaxed" style="color:var(--muted)">${c.desc}</p>
+    </div>
+  `).join('');
+  // Animate bars
+  setTimeout(() => {
+    grid.querySelectorAll('.growth-fill').forEach(bar => {
+      const w = bar.style.width;
+      bar.style.width = '0%';
+      requestAnimationFrame(() => { bar.style.width = w; });
+    });
+  }, 100);
+}
+
+function showGrowthDetail(season, index) {
+  const c = cropData[season][index];
+  const panel = document.getElementById('growthDetail');
+  document.getElementById('growthDetailTitle').textContent = c.emoji + ' ' + c.name + ' Growth Cycle';
+  const totalDays = c.days;
+  const profit = c.sell - c.buy;
+  const gpd = (profit / totalDays).toFixed(1);
+
+  let html = `
+    <div class="flex flex-wrap gap-4 mb-6">
+      <div class="px-4 py-2 rounded-lg" style="background:var(--bg);">
+        <div class="text-xs" style="color:var(--muted)">Seed Cost</div>
+        <div class="font-semibold" style="color:var(--text)">${c.buy}g</div>
+      </div>
+      <div class="px-4 py-2 rounded-lg" style="background:var(--bg);">
+        <div class="text-xs" style="color:var(--muted)">Sell Price</div>
+        <div class="font-semibold text-brand-600">${c.sell}g</div>
+      </div>
+      <div class="px-4 py-2 rounded-lg" style="background:var(--bg);">
+        <div class="text-xs" style="color:var(--muted)">Profit</div>
+        <div class="font-semibold text-amber-600">${profit}g</div>
+      </div>
+      <div class="px-4 py-2 rounded-lg" style="background:var(--bg);">
+        <div class="text-xs" style="color:var(--muted)">Gold/Day</div>
+        <div class="font-semibold text-purple-600">${gpd}g</div>
+      </div>
+      ${c.regrow ? `<div class="px-4 py-2 rounded-lg" style="background:var(--bg);">
+        <div class="text-xs" style="color:var(--muted)">Regrow</div>
+        <div class="font-semibold text-blue-600">${c.regrow} days</div>
+      </div>` : ''}
+    </div>
+    <h4 class="text-sm font-medium mb-3" style="color:var(--text)">Day-by-Day Growth Progress</h4>
+    <div class="flex flex-wrap gap-2 mb-4" id="dayIndicators">
+      ${Array.from({length:totalDays}, (_,d) => `<div class="day-indicator future" data-day="${d+1}">${d+1}</div>`).join('')}
+    </div>
+    <div class="mb-4">
+      <div class="growth-bar" style="background:var(--bg);height:24px;">
+        <div id="growthAnimBar" class="growth-fill" style="width:0%;background:linear-gradient(90deg,#059669,#10b981);transition:width 0.4s ease;"></div>
+      </div>
+      <div class="flex justify-between mt-1 text-xs" style="color:var(--muted)">
+        <span>Planted</span><span id="growthDayLabel">Day 0</span><span>Harvest</span>
+      </div>
+    </div>
+    <div class="flex gap-3">
+      <button onclick="animateGrowth(${totalDays})" class="px-4 py-2 rounded-lg bg-brand-600 text-white text-sm font-medium hover:bg-brand-700 transition flex items-center gap-2">
+        <i data-lucide="play" class="w-3.5 h-3.5"></i> Play Animation
+      </button>
+      <button onclick="resetGrowth(${totalDays})" class="px-4 py-2 rounded-lg border text-sm font-medium hover:bg-stone-100 dark:hover:bg-zinc-800 transition flex items-center gap-2" style="border-color:var(--border);color:var(--text);">
+        <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i> Reset
+      </button>
+    </div>
+  `;
+  document.getElementById('growthDetailContent').innerHTML = html;
+  panel.classList.remove('hidden');
+  panel.scrollIntoView({behavior:'smooth', block:'nearest'});
+  lucide.createIcons();
+}
+
+let growthAnimTimer = null;
+function animateGrowth(totalDays) {
+  resetGrowth(totalDays);
+  let day = 0;
+  clearInterval(growthAnimTimer);
+  growthAnimTimer = setInterval(() => {
+    day++;
+    if (day > totalDays) { clearInterval(growthAnimTimer); return; }
+    const indicators = document.querySelectorAll('#dayIndicators .day-indicator');
+    indicators.forEach((ind, i) => {
+      if (i < day) { ind.classList.remove('future','current'); ind.classList.add('grown'); }
+      else if (i === day) { ind.classList.remove('future'); ind.classList.add('current'); }
+    });
+    const pct = Math.min(100, (day / totalDays) * 100);
+    document.getElementById('growthAnimBar').style.width = pct + '%';
+    document.getElementById('growthDayLabel').textContent = `Day ${day} / ${totalDays}`;
+  }, 500);
+}
+
+function resetGrowth(totalDays) {
+  clearInterval(growthAnimTimer);
+  document.querySelectorAll('#dayIndicators .day-indicator').forEach(ind => {
+    ind.classList.remove('grown','current'); ind.classList.add('future');
+  });
+  document.getElementById('growthAnimBar').style.width = '0%';
+  document.getElementById('growthDayLabel').textContent = 'Day 0';
+}
+
+function closeGrowthDetail() {
+  clearInterval(growthAnimTimer);
+  document.getElementById('growthDetail').classList.add('hidden');
+}
+
+// ===================== FISHING =====================
+let fishSeason = 'spring';
+function switchFishSeason(season, btn) {
+  fishSeason = season;
+  document.querySelectorAll('#page-fishing .tab-btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  else document.querySelector(`#page-fishing .tab-btn:first-child`)?.classList.add('active');
+  renderFish();
+}
+
+function renderFish() {
+  const grid = document.getElementById('fishGrid');
+  const fish = fishData[fishSeason] || [];
+  grid.innerHTML = fish.map((f, i) => {
+    const rarityClass = f.rarity === 'Easy' ? 'rarity-common' : f.rarity === 'Medium' ? 'rarity-uncommon' : f.rarity === 'Hard' ? 'rarity-rare' : 'rarity-legendary';
+    return `
+    <div class="rounded-2xl border overflow-hidden cursor-pointer transition-all hover:shadow-lg hover:border-blue-300 group" style="background:var(--surface);border-color:var(--border);" onclick="showFishDetail('${fishSeason}',${i})">
+      <div class="h-32 flex items-center justify-center relative" style="background:linear-gradient(135deg,#dbeafe,#e0f2fe);">
+        <span class="text-5xl group-hover:scale-110 transition-transform">${f.emoji}</span>
+        <span class="absolute top-3 right-3 px-2 py-0.5 rounded-full text-[10px] font-semibold ${rarityClass}">${f.rarity}</span>
+      </div>
+      <div class="p-4">
+        <h4 class="font-serif font-semibold" style="color:var(--text)">${f.name}</h4>
+        <div class="flex justify-between items-center mt-2">
+          <span class="text-xs" style="color:var(--muted)">${f.location}</span>
+          <span class="text-sm font-semibold text-amber-600">${f.price}g</span>
+        </div>
+        <div class="flex gap-2 mt-2">
+          <span class="text-[10px] px-2 py-0.5 rounded-full" style="background:var(--bg);color:var(--muted);">${f.weather}</span>
+          <span class="text-[10px] px-2 py-0.5 rounded-full" style="background:var(--bg);color:var(--muted);">${f.time.split('–')[0]}–${f.time.split('–')[1] || f.time.split('–')[0]}</span>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function showFishDetail(season, index) {
+  const f = fishData[season][index];
+  const rarityClass = f.rarity === 'Easy' ? 'rarity-common' : f.rarity === 'Medium' ? 'rarity-uncommon' : f.rarity === 'Hard' ? 'rarity-rare' : 'rarity-legendary';
+  document.getElementById('fishModalTitle').textContent = f.emoji + ' ' + f.name;
+  document.getElementById('fishModalBody').innerHTML = `
+    <div class="flex justify-center mb-4">
+      <div class="w-24 h-24 rounded-2xl flex items-center justify-center" style="background:linear-gradient(135deg,#dbeafe,#e0f2fe);">
+        <span class="text-5xl">${f.emoji}</span>
+      </div>
+    </div>
+    <div class="flex justify-center mb-4">
+      <span class="px-3 py-1 rounded-full text-xs font-semibold ${rarityClass}">${f.rarity}</span>
+    </div>
+    <div class="space-y-3">
+      <div class="flex justify-between items-center py-2 border-b" style="border-color:var(--border);">
+        <span class="text-sm" style="color:var(--muted)">Sell Price</span>
+        <span class="font-semibold text-amber-600">${f.price}g</span>
+      </div>
+      <div class="flex justify-between items-center py-2 border-b" style="border-color:var(--border);">
+        <span class="text-sm" style="color:var(--muted)">Location</span>
+        <span class="text-sm font-medium" style="color:var(--text)">${f.location}</span>
+      </div>
+      <div class="flex justify-between items-center py-2 border-b" style="border-color:var(--border);">
+        <span class="text-sm" style="color:var(--muted)">Weather</span>
+        <span class="text-sm font-medium" style="color:var(--text)">${f.weather === 'Rain' ? '🌧️ ' : f.weather === 'Sunny' ? '☀️ ' : ''}${f.weather}</span>
+      </div>
+      <div class="flex justify-between items-center py-2 border-b" style="border-color:var(--border);">
+        <span class="text-sm" style="color:var(--muted)">Time</span>
+        <span class="text-sm font-medium" style="color:var(--text)">${f.time}</span>
+      </div>
+      <div class="flex justify-between items-center py-2">
+        <span class="text-sm" style="color:var(--muted)">Season</span>
+        <span class="text-sm font-medium capitalize" style="color:var(--text)">${season}</span>
+      </div>
+    </div>
+  `;
+  document.getElementById('fishModal').classList.add('show');
+  lucide.createIcons();
+}
+
+function closeFishModal() {
+  document.getElementById('fishModal').classList.remove('show');
+}
+
+// ===================== VILLAGERS =====================
+function renderVillagers() {
+  const grid = document.getElementById('villagerGrid');
+  grid.innerHTML = villagerData.map((v, i) => {
+    const heartsHtml = Array.from({length:10}, (_,h) => `<span class="heart ${h < v.hearts ? 'filled' : 'empty'}" onclick="setHeart(${i},${h+1})">♥</span>`).join('');
+    return `
+    <div class="rounded-2xl border p-5 transition-all hover:shadow-lg" style="background:var(--surface);border-color:var(--border);" id="villager-${i}">
+      <div class="flex items-center gap-3 mb-3">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl" style="background:var(--bg);">${v.emoji}</div>
+        <div>
+          <h4 class="font-serif font-semibold" style="color:var(--text)">${v.name}</h4>
+          <span class="text-xs" style="color:var(--muted)">${v.role}</span>
+        </div>
+        <div class="ml-auto text-sm font-semibold" style="color:var(--accent)">${v.hearts}/10</div>
+      </div>
+      <div class="heart-bar mb-3">${heartsHtml}</div>
+      <div class="flex flex-wrap gap-1.5">
+        ${v.loves.map(l => `<span class="px-2 py-0.5 rounded text-[10px] font-medium bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400">❤️ ${l}</span>`).join('')}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function setHeart(villagerIdx, heartCount) {
+  const v = villagerData[villagerIdx];
+  // Toggle: if clicking the same heart count, reduce by 1
+  if (v.hearts === heartCount) {
+    v.hearts = Math.max(0, heartCount - 1);
+  } else {
+    v.hearts = heartCount;
+  }
+  renderVillagers();
+  showToast(`${v.name}: ${v.hearts} ♥`);
+}
+
+// ===================== CHEATS =====================
+function renderQuickSpawn() {
+  const grid = document.getElementById('quickSpawnGrid');
+  grid.innerHTML = quickSpawnItems.map(id => {
+    const item = cheatItems[id];
+    if (!item) return '';
+    return `
+    <button onclick="quickSpawnItem('${id}')" class="flex flex-col items-center gap-2 p-3 rounded-xl border transition-all hover:shadow-md hover:border-amber-300" style="background:var(--bg);border-color:var(--border);">
+      <span class="text-2xl">${item.emoji}</span>
+      <span class="text-[10px] font-medium text-center leading-tight" style="color:var(--text)">${item.name}</span>
+      <code class="text-[9px] px-1.5 py-0.5 rounded bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 font-mono">#${id}</code>
+    </button>`;
+  }).join('');
+}
+
+function quickSpawnItem(id) {
+  document.getElementById('cheatInput').value = id;
+  spawnItem();
+}
+
+function spawnItem() {
+  const input = document.getElementById('cheatInput').value.trim().toLowerCase();
+  const result = document.getElementById('spawnResult');
+  const item = cheatItems[input];
+  
+  if (!item) {
+    result.innerHTML = `
+      <div class="text-center py-6">
+        <div class="text-3xl mb-2">❌</div>
+        <p class="text-sm font-medium" style="color:var(--text)">Unknown Item Code</p>
+        <p class="text-xs mt-1" style="color:var(--muted)">"${input}" is not a valid item code or name.</p>
+      </div>`;
+    return;
+  }
+
+  // Create sparkles
+  let sparklesHtml = '';
+  for (let i = 0; i < 8; i++) {
+    const x = 20 + Math.random() * 60;
+    const y = 10 + Math.random() * 80;
+    const delay = Math.random() * 0.4;
+    const size = 6 + Math.random() * 8;
+    sparklesHtml += `<div class="spawn-sparkle" style="left:${x}%;top:${y}%;width:${size}px;height:${size}px;border-radius:50%;background:${item.color};animation-delay:${delay}s;"></div>`;
+  }
+
+  result.innerHTML = `
+    <div class="relative flex flex-col items-center justify-center py-8">
+      ${sparklesHtml}
+      <div class="spawn-item relative">
+        <div class="w-20 h-20 rounded-2xl flex items-center justify-center text-4xl shadow-lg" style="background:linear-gradient(135deg,${item.color}22,${item.color}44);border:2px solid ${item.color}66;">
+          ${item.emoji}
+        </div>
+      </div>
+      <div class="mt-4 text-center relative z-10">
+        <p class="font-serif font-semibold text-lg" style="color:var(--text)">${item.name}</p>
+        <p class="text-xs mt-1" style="color:var(--muted)">${item.desc}</p>
+        <div class="mt-3 inline-flex items-center gap-2 px-3 py-1.5 rounded-full" style="background:${item.color}22;border:1px solid ${item.color}44;">
+          <span class="text-[10px] font-medium tracking-wide uppercase" style="color:${item.color}">Item Spawned Successfully</span>
+        </div>
+      </div>
+    </div>`;
+
+  showToast(`Spawned: ${item.name} ${item.emoji}`);
+}
+
+// ===================== PROFITS =====================
+let profitSeason = 'spring';
+function switchProfitSeason(season, btn) {
+  profitSeason = season;
+  document.querySelectorAll('#page-profits .tab-btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  else document.querySelector(`#page-profits .tab-btn:first-child`)?.classList.add('active');
+  renderProfits();
+}
+
+function renderProfits() {
+  const crops = cropData[profitSeason] || [];
+  if (!crops.length) return;
+  
+  // Calculate gold per day
+  const profitData = crops.map(c => {
+    const profit = c.sell - c.buy;
+    const totalDays = c.days + (c.regrow ? 0 : 0); // First harvest only
+    const gpd = profit / totalDays;
+    return { ...c, profit, gpd };
+  }).sort((a, b) => b.gpd - a.gpd);
+
+  const maxGpd = Math.max(...profitData.map(p => p.gpd));
+  const colors = ['#059669','#10b981','#34d399','#6ee7b7','#a7f3d0','#3b82f6','#60a5fa','#93c5fd'];
+
+  // Bar chart
+  const chart = document.getElementById('profitChart');
+  chart.innerHTML = profitData.map((c, i) => {
+    const heightPct = maxGpd > 0 ? (c.gpd / maxGpd) * 100 : 0;
+    const color = colors[i % colors.length];
+    return `
+    <div class="bar-col">
+      <div class="bar-value">${c.gpd.toFixed(1)}</div>
+      <div class="bar-stick" style="height:0%;background:${color};" data-height="${heightPct}"></div>
+      <div class="bar-label">${c.emoji} ${c.name}</div>
+    </div>`;
+  }).join('');
+
+  // Animate bars
+  setTimeout(() => {
+    chart.querySelectorAll('.bar-stick').forEach(bar => {
+      const h = bar.dataset.height;
+      requestAnimationFrame(() => { bar.style.height = h + '%'; });
+    });
+  }, 200);
+
+  // Table
+  const tbody = document.getElementById('profitTableBody');
+  tbody.innerHTML = profitData.map((c, i) => {
+    const isTop = i === 0;
+    return `
+    <tr style="border-bottom:1px solid var(--border);" class="${isTop ? 'bg-brand-50 dark:bg-brand-900/20' : ''}">
+      <td class="py-2.5 flex items-center gap-2"><span>${c.emoji}</span><span style="color:var(--text)">${c.name}</span>${isTop ? '<span class="text-[9px] px-1.5 py-0.5 rounded bg-brand-100 text-brand-700 dark:bg-brand-900/40 dark:text-brand-400 font-semibold">BEST</span>' : ''}</td>
+      <td class="text-right py-2.5" style="color:var(--muted)">${c.buy}g</td>
+      <td class="text-right py-2.5 font-medium" style="color:var(--text)">${c.sell}g</td>
+      <td class="text-right py-2.5" style="color:var(--muted)">${c.days}d</td>
+      <td class="text-right py-2.5 font-semibold ${isTop ? 'text-brand-600' : ''}" style="${isTop ? '' : 'color:var(--text)'}">${c.gpd.toFixed(1)}g</td>
+    </tr>`;
+  }).join('');
+}
+
+// ===================== TOAST =====================
+function showToast(text) {
+  const toast = document.getElementById('toast');
+  document.getElementById('toastText').textContent = text;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 2500);
+}
+
+// ===================== INIT =====================
+document.addEventListener('DOMContentLoaded', () => {
+  lucide.createIcons();
+  // Init home page active
+  document.getElementById('page-home').classList.add('active');
+});
+</script>
+</body>
+</html>
