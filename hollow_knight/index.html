@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hollow Knight Complete Guide - Bosses, Charms, Maps & Walkthrough | IndieGameDeep</title>
+<meta name="description" content="Complete Hollow Knight guide with interactive boss tracker, charm builder, area progression checklist, and ability unlock order. Master Hallownest with our expert strategies.">
+<meta name="keywords" content="Hollow Knight guide, Hollow Knight bosses, Hollow Knight charms, Hollow Knight map, Hollow Knight walkthrough, Hollow Knight tips, metroidvania guide">
+<meta name="robots" content="index, follow">
+<meta name="googlebot" content="index, follow">
+<link rel="canonical" href="http://www.indiegamedeep.com/hollow_knight_guide/">
+<link rel="alternate" hreflang="en" href="http://www.indiegamedeep.com/hollow_knight_guide/">
+<meta property="og:title" content="Hollow Knight Complete Guide | IndieGameDeep">
+<meta property="og:description" content="Interactive boss tracker, charm builder, area checklist and full walkthrough for Hollow Knight.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="IndieGameDeep">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>tailwind.config={theme:{extend:{fontFamily:{sans:['Inter','sans-serif'],display:['Space Grotesk','sans-serif']},colors:{brand:{50:'#f0fdf4',100:'#dcfce7',200:'#bbf7d0',500:'#22c55e',600:'#16a34a',700:'#15803d',800:'#166534',900:'#14532d'},hk:{bg:'#0c0e14',card:'#151823',border:'#1e2235',accent:'#6366f1',accentLight:'#a5b4fc',muted:'#7c82a0',text:'#e2e8f0'}}}}}</script>
+<style>
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:#f8fafc;color:#1e293b}
+.font-display{font-family:'Space Grotesk',sans-serif}
+.hk-dark{background:#0c0e14;color:#e2e8f0}
+.hk-card{background:#151823;border:1px solid #1e2235;border-radius:16px;transition:all .2s}
+.hk-card:hover{border-color:#6366f1;box-shadow:0 0 20px rgba(99,102,241,.08)}
+.badge{display:inline-flex;align-items:center;padding:4px 12px;border-radius:9999px;font-size:12px;font-weight:600}
+.btn-brand{background:#16a34a;color:#fff;padding:10px 24px;border-radius:10px;font-weight:600;transition:all .2s}.btn-brand:hover{background:#15803d;transform:translateY(-1px)}
+.btn-hk{background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;padding:10px 24px;border-radius:10px;font-weight:600;transition:all .2s}.btn-hk:hover{opacity:.9;transform:translateY(-1px)}
+.nav-link{position:relative;padding:6px 0;font-weight:500;color:#7c82a0;transition:color .2s}.nav-link:hover,.nav-link.active{color:#e2e8f0}.nav-link.active::after{content:'';position:absolute;bottom:-2px;left:0;width:100%;height:2px;background:#6366f1;border-radius:2px}
+.tab-btn{padding:8px 16px;border-radius:10px;font-size:13px;font-weight:500;cursor:pointer;transition:all .15s;border:1px solid transparent;background:transparent;color:#7c82a0}.tab-btn:hover{color:#e2e8f0;background:rgba(99,102,241,.08)}.tab-btn.on{background:rgba(99,102,241,.15);color:#a5b4fc;border-color:rgba(99,102,241,.3)}
+.check-box{width:20px;height:20px;border-radius:6px;border:2px solid #1e2235;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0;font-size:11px}.check-box.done{background:#6366f1;border-color:#6366f1;color:#fff}
+.charm-card{padding:10px 14px;border-radius:12px;border:1px solid #1e2235;cursor:pointer;transition:all .15s;background:#151823}.charm-card:hover{border-color:#6366f1}.charm-card.equipped{border-color:#6366f1;background:rgba(99,102,241,.1);box-shadow:0 0 12px rgba(99,102,241,.15)}
+.notch{width:24px;height:24px;border-radius:6px;border:2px solid #1e2235;transition:all .2s}.notch.filled{background:#6366f1;border-color:#6366f1}
+.boss-row{display:flex;align-items:center;gap:12px;padding:10px 14px;border-radius:12px;border:1px solid #1e2235;transition:all .15s;cursor:pointer;background:#151823}.boss-row:hover{border-color:#6366f1}.boss-row.defeated{opacity:.5}
+.diff-bar{height:6px;border-radius:3px;background:#1e2235;overflow:hidden;flex:1}.diff-fill{height:100%;border-radius:3px;transition:width .5s}
+.section-anchor{scroll-margin-top:80px}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}.fade-up{animation:fadeUp .4s ease forwards}
+@keyframes glow{0%,100%{box-shadow:0 0 8px rgba(99,102,241,.2)}50%{box-shadow:0 0 20px rgba(99,102,241,.4)}}.glow-pulse{animation:glow 2s infinite}
+</style>
+</head>
+<body class="antialiased">
+
+<!-- ===== NAVBAR ===== -->
+<header class="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-slate-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-14">
+<a href="http://www.indiegamedeep.com/" class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-lg bg-brand-600 flex items-center justify-center"><i data-lucide="gamepad-2" class="w-4 h-4 text-white"></i></div>
+<span class="font-display text-lg font-bold text-slate-900">IndieGame<span class="text-brand-600">Deep</span></span>
+</a>
+<nav class="hidden md:flex items-center gap-6">
+<a href="http://www.indiegamedeep.com/" class="text-sm font-medium text-slate-500 hover:text-brand-600 transition">Home</a>
+<a href="http://www.indiegamedeep.com/stardew_valley_guide/" class="text-sm font-medium text-slate-500 hover:text-brand-600 transition">Stardew Valley</a>
+<a href="#" class="text-sm font-medium text-indigo-600 border-b-2 border-indigo-600 pb-0.5">Hollow Knight</a>
+</nav>
+</div>
+</div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hk-dark relative overflow-hidden">
+<div class="absolute inset-0" style="background:radial-gradient(ellipse at 30% 20%,rgba(99,102,241,.12),transparent 60%),radial-gradient(ellipse at 80% 80%,rgba(139,92,246,.08),transparent 50%)"></div>
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-indigo-500/5 rounded-full blur-3xl"></div>
+<div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
+<div class="max-w-3xl">
+<div class="badge bg-indigo-500/15 text-indigo-300 mb-5">🦋 Complete Interactive Guide</div>
+<h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.08] mb-5">
+Hollow Knight<br><span class="text-indigo-400">Master Guide</span>
+</h1>
+<p class="text-lg text-hk-muted leading-relaxed mb-8 max-w-xl">Track bosses, build charm loadouts, plan your area progression, and unlock every ability. Your interactive companion for conquering Hallownest.</p>
+<div class="flex flex-wrap gap-3">
+<a href="#bosses" class="btn-hk inline-flex items-center gap-2"><i data-lucide="swords" class="w-4 h-4"></i> Boss Tracker</a>
+<a href="#charms" class="px-5 py-2.5 border border-hk-border rounded-lg font-semibold text-hk-text hover:bg-white/5 transition inline-flex items-center gap-2"><i data-lucide="sparkles" class="w-4 h-4"></i> Charm Builder</a>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ===== QUICK NAV ===== -->
+<section class="hk-dark border-t border-hk-border">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+<div class="flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
+<a href="#bosses" class="tab-btn on whitespace-nowrap" onclick="setTab(this)">⚔️ Bosses</a>
+<a href="#charms" class="tab-btn whitespace-nowrap" onclick="setTab(this)">🔮 Charms</a>
+<a href="#areas" class="tab-btn whitespace-nowrap" onclick="setTab(this)">🗺️ Areas</a>
+<a href="#abilities" class="tab-btn whitespace-nowrap" onclick="setTab(this)">✨ Abilities</a>
+<a href="#tips" class="tab-btn whitespace-nowrap" onclick="setTab(this)">💡 Tips</a>
+</div>
+</div>
+</section>
+
+<!-- ===== MAIN CONTENT ===== -->
+<main class="hk-dark">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-16">
+
+<!-- ===== BOSSES ===== -->
+<section id="bosses" class="section-anchor">
+<div class="flex items-center justify-between mb-6 flex-wrap gap-4">
+<div>
+<h2 class="font-display text-2xl md:text-3xl font-bold text-hk-text">Boss Tracker</h2>
+<p class="text-sm text-hk-muted mt-1">Click any boss to toggle defeated status · 22 bosses total</p>
+</div>
+<div class="flex items-center gap-3">
+<span id="bossCount" class="text-sm font-semibold text-indigo-400">0 / 22</span>
+<div class="w-32 h-2 rounded-full bg-hk-border overflow-hidden"><div id="bossBar" class="h-full rounded-full bg-indigo-500 transition-all duration-500" style="width:0%"></div></div>
+</div>
+</div>
+<div id="bossGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3"></div>
+</section>
+
+<!-- ===== CHARMS ===== -->
+<section id="charms" class="section-anchor">
+<div class="flex items-center justify-between mb-6 flex-wrap gap-4">
+<div>
+<h2 class="font-display text-2xl md:text-3xl font-bold text-hk-text">Charm Builder</h2>
+<p class="text-sm text-hk-muted mt-1">Click charms to equip · 11 Notch limit</p>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex gap-1" id="notchDisplay"></div>
+<span id="notchCount" class="text-sm font-semibold text-indigo-400">0 / 11</span>
+</div>
+</div>
+<div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3" id="charmGrid"></div>
+</section>
+
+<!-- ===== AREAS ===== -->
+<section id="areas" class="section-anchor">
+<div class="flex items-center justify-between mb-6 flex-wrap gap-4">
+<div>
+<h2 class="font-display text-2xl md:text-3xl font-bold text-hk-text">Area Progression</h2>
+<p class="text-sm text-hk-muted mt-1">Check off areas as you explore them</p>
+</div>
+<div class="flex items-center gap-3">
+<span id="areaCount" class="text-sm font-semibold text-indigo-400">0 / 16</span>
+<div class="w-32 h-2 rounded-full bg-hk-border overflow-hidden"><div id="areaBar" class="h-full rounded-full bg-indigo-500 transition-all duration-500" style="width:0%"></div></div>
+</div>
+</div>
+<div id="areaList" class="grid sm:grid-cols-2 gap-3"></div>
+</section>
+
+<!-- ===== ABILITIES ===== -->
+<section id="abilities" class="section-anchor">
+<div class="flex items-center justify-between mb-6 flex-wrap gap-4">
+<div>
+<h2 class="font-display text-2xl md:text-3xl font-bold text-hk-text">Ability Unlocks</h2>
+<p class="text-sm text-hk-muted mt-1">Track your movement and combat abilities</p>
+</div>
+<div class="flex items-center gap-3">
+<span id="abilityCount" class="text-sm font-semibold text-indigo-400">0 / 12</span>
+<div class="w-32 h-2 rounded-full bg-hk-border overflow-hidden"><div id="abilityBar" class="h-full rounded-full bg-indigo-500 transition-all duration-500" style="width:0%"></div></div>
+</div>
+</div>
+<div id="abilityList" class="grid sm:grid-cols-2 gap-3"></div>
+</section>
+
+<!-- ===== TIPS ===== -->
+<section id="tips" class="section-anchor">
+<h2 class="font-display text-2xl md:text-3xl font-bold text-hk-text mb-6">Essential Tips</h2>
+<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+
+<div class="hk-card p-6">
+<div class="w-10 h-10 rounded-xl bg-indigo-500/15 flex items-center justify-center mb-4"><i data-lucide="shield" class="w-5 h-5 text-indigo-400"></i></div>
+<h3 class="font-display font-bold text-hk-text mb-2">Master the Dash</h3>
+<p class="text-sm text-hk-muted leading-relaxed">The Mothwing Cloak (Dash) is the single most important ability. Get it early from the Mantis Lords area or by defeating Hornet in Greenpath. It dramatically improves both combat and exploration.</p>
+</div>
+
+<div class="hk-card p-6">
+<div class="w-10 h-10 rounded-xl bg-violet-500/15 flex items-center justify-center mb-4"><i data-lucide="heart" class="w-5 h-5 text-violet-400"></i></div>
+<h3 class="font-display font-bold text-hk-text mb-2">Focus on Masks First</h3>
+<p class="text-sm text-hk-muted leading-relaxed">Collect Mask Shards whenever possible. Each 4 shards give +1 Mask of health. More health means more mistakes you can survive while learning boss patterns.</p>
+</div>
+
+<div class="hk-card p-6">
+<div class="w-10 h-10 rounded-xl bg-blue-500/15 flex items-center justify-center mb-4"><i data-lucide="map" class="w-5 h-5 text-blue-400"></i></div>
+<h3 class="font-display font-bold text-hk-text mb-2">Buy Maps Immediately</h3>
+<p class="text-sm text-hk-muted leading-relaxed">Find Cornifer in each area and buy the map. Then buy the Quill from Iselda to mark benches and stations. Wandering blind wastes enormous time in Hallownest.</p>
+</div>
+
+<div class="hk-card p-6">
+<div class="w-10 h-10 rounded-xl bg-emerald-500/15 flex items-center justify-center mb-4"><i data-lucide="zap" class="w-5 h-5 text-emerald-400"></i></div>
+<h3 class="font-display font-bold text-hk-text mb-2">Spells Are Safe Damage</h3>
+<p class="text-sm text-hk-muted leading-relaxed">Vengeful Spirit and Descending Dark deal big damage with invincibility frames. Use them during boss openings. Descending Dark's i-frames make it one of the best defensive tools in the game.</p>
+</div>
+
+<div class="hk-card p-6">
+<div class="w-10 h-10 rounded-xl bg-amber-500/15 flex items-center justify-center mb-4"><i data-lucide="coins" class="w-5 h-5 text-amber-400"></i></div>
+<h3 class="font-display font-bold text-hk-text mb-2">Farm Geo Early</h3>
+<p class="text-sm text-hk-muted leading-relaxed">The best early Geo farm is the Husk Guards in Forgotten Crossroads. Equip Dreamcatcher and you can also farm Essence for rewards from Seer. Later, the Colosseum is excellent.</p>
+</div>
+
+<div class="hk-card p-6">
+<div class="w-10 h-10 rounded-xl bg-rose-500/15 flex items-center justify-center mb-4"><i data-lucide="skull" class="w-5 h-5 text-rose-400"></i></div>
+<h3 class="font-display font-bold text-hk-text mb-2">Don't Fear Death</h3>
+<p class="text-sm text-hk-muted leading-relaxed">When you die, you leave a Shade at the spot. Return and strike it to recover all Geo. If you die again before recovering, the Geo is lost. Death is a teacher — learn boss patterns through repetition.</p>
+</div>
+
+<div class="hk-card p-6">
+<div class="w-10 h-10 rounded-xl bg-cyan-500/15 flex items-center justify-center mb-4"><i data-lucide="anchor" class="w-5 h-5 text-cyan-400"></i></div>
+<h3 class="font-display font-bold text-hk-text mb-2">Nail Pogo Everything</h3>
+<p class="text-sm text-hk-muted leading-relaxed">Striking downward with your nail while airborne bounces you up. This "pogo" mechanic is essential for platforming and combat. Practice on spikes and enemies — it opens up sequence breaks and secret areas.</p>
+</div>
+
+<div class="hk-card p-6">
+<div class="w-10 h-10 rounded-xl bg-pink-500/15 flex items-center justify-center mb-4"><i data-lucide="music" class="w-5 h-5 text-pink-400"></i></div>
+<h3 class="font-display font-bold text-hk-text mb-2">Listen for Humming</h3>
+<p class="text-sm text-hk-muted leading-relaxed">Cornifer hums when you're near his location. If you hear faint humming, explore nearby — he's selling a map for that area. The louder it gets, the closer you are.</p>
+</div>
+
+<div class="hk-card p-6">
+<div class="w-10 h-10 rounded-xl bg-orange-500/15 flex items-center justify-center mb-4"><i data-lucide="target" class="w-5 h-5 text-orange-400"></i></div>
+<h3 class="font-display font-bold text-hk-text mb-2">Dream Nail for Lore</h3>
+<p class="text-sm text-hk-muted leading-relaxed">The Dream Nail lets you read the minds of NPCs and the dead. It's also required to access Dream Bosses (more difficult versions of some bosses) and the White Palace. Get it from the Resting Grounds.</p>
+</div>
+
+</div>
+</section>
+
+<!-- ===== WALKTHROUGH ===== -->
+<section id="walkthrough" class="section-anchor">
+<h2 class="font-display text-2xl md:text-3xl font-bold text-hk-text mb-6">Recommended Progression Order</h2>
+<div class="hk-card p-6 md:p-8">
+<p class="text-sm text-hk-muted mb-6">Hollow Knight is a Metroidvania — you can explore freely, but this order minimizes backtracking and ensures you get key abilities before difficult areas.</p>
+<div class="space-y-4" id="walkthroughList"></div>
+</div>
+</section>
+
+</div>
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="hk-dark border-t border-hk-border mt-12">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+<div class="grid md:grid-cols-3 gap-8">
+<div>
+<div class="flex items-center gap-2 mb-3"><div class="w-7 h-7 rounded-lg bg-brand-600 flex items-center justify-center"><i data-lucide="gamepad-2" class="w-3.5 h-3.5 text-white"></i></div><span class="font-display text-base font-bold text-hk-text">IndieGameDeep</span></div>
+<p class="text-xs text-hk-muted leading-relaxed">Interactive guides for the best indie games. Built by gamers, for gamers.</p>
+</div>
+<div><h4 class="text-hk-text font-semibold text-xs mb-2 uppercase tracking-wider">More Guides</h4><ul class="space-y-1.5 text-xs text-hk-muted"><li><a href="http://www.indiegamedeep.com/stardew_valley_guide/" class="hover:text-indigo-400 transition">🌾 Stardew Valley Guide</a></li><li><a href="#" class="hover:text-indigo-400 transition">🦋 Hollow Knight Guide</a></li></ul></div>
+<div><h4 class="text-hk-text font-semibold text-xs mb-2 uppercase tracking-wider">Quick Links</h4><ul class="space-y-1.5 text-xs text-hk-muted"><li><a href="#bosses" class="hover:text-indigo-400 transition">Boss Tracker</a></li><li><a href="#charms" class="hover:text-indigo-400 transition">Charm Builder</a></li><li><a href="#areas" class="hover:text-indigo-400 transition">Area Progression</a></li></ul></div>
+</div>
+<div class="border-t border-hk-border mt-8 pt-5 text-center text-[11px] text-hk-muted">&copy; 2025 IndieGameDeep. Hollow Knight is a trademark of Team Cherry. This is a fan-made guide.</div>
+</div>
+</footer>
+
+<script>
+// ===================== DATA =====================
+const BOSSES=[
+{n:"False Knight",hp:800,diff:2,area:"Forgotten Crossroads",emoji:"🛡️",dream:false},
+{n:"Hornet (Challenger)",hp:600,diff:3,area:"Greenpath",emoji:"🧵",dream:false},
+{n:"Mantis Lords",hp:500,diff:4,area:"Fungal Wastes",emoji:"🗡️",dream:false},
+{n:"Soul Master",hp:680,diff:4,area:"City of Tears",emoji:"👻",dream:false},
+{n:"Crystal Guardian",hp:700,diff:3,area:"Crystal Peak",emoji:"💎",dream:false},
+{n:"Hornet (Protector)",hp:900,diff:5,area:"Kingdom's Edge",emoji:"🧵",dream:false},
+{n:"Nosk",hp:880,diff:4,area:"Deepnest",emoji:"🕷️",dream:false},
+{n:"Broken Vessel",hp:1000,diff:4,area:"Ancient Basin",emoji:"🦠",dream:false},
+{n:"Dung Defender",hp:850,diff:3,area:"Royal Waterways",emoji:"🪲",dream:false},
+{n:"Traitor Lord",hp:1000,diff:4,area:"Queen's Gardens",emoji:"👑",dream:false},
+{n:"Uumuu",hp:600,diff:3,area:"Teacher's Archive",emoji:"🪼",dream:false},
+{n:"Watcher Knights",hp:1100,diff:5,area:"City of Tears",emoji:"👁️",dream:false},
+{n:"Lost Kin",hp:1200,diff:6,area:"Dream",emoji:"💤",dream:true},
+{n:"Failed Champion",hp:1000,diff:5,area:"Dream",emoji:"⚔️",dream:true},
+{n:"Soul Tyrant",hp:800,diff:6,area:"Dream",emoji:"💀",dream:true},
+{n:"White Defender",hp:1200,diff:7,area:"Dream",emoji:"🛡️",dream:true},
+{n:"Grey Prince Zote",hp:1100,diff:6,area:"Dream",emoji:"🎪",dream:true},
+{n:"Grimm",hp:1500,diff:7,area:"Dirtmouth",emoji:"🔥",dream:false},
+{n:"Nightmare King Grimm",hp:1800,diff:9,area:"Dream",emoji:"🔥",dream:true},
+{n:"Hive Knight",hp:950,diff:4,area:"The Hive",emoji:"🐝",dream:false},
+{n:"God Tamer",hp:1300,diff:6,area:"Godhome",emoji:"🏟️",dream:false},
+{n:"Pure Vessel",hp:2000,diff:10,area:"Godhome",emoji:"🤍",dream:false}
+];
+
+const CHARMS=[
+{n:"Wayward Compass",notch:1,desc:"Reveals your position on the map",emoji:"🧭"},
+{n:"Stalwart Shield",notch:2,desc:"Longer invincibility after taking damage",emoji:"🐚"},
+{n:"Quick Focus",notch:3,desc:"Focus healing is 33% faster",emoji:"💛"},
+{n:"Lifeblood Heart",notch:2,desc:"+2 Lifeblood Masks at full health",emoji:"💙"},
+{n:"Lifeblood Core",notch:3,desc:"+4 Lifeblood Masks at full health",emoji:"💠"},
+{n:"Soul Catcher",notch:2,desc:"+33% Soul from nail hits",emoji:"🫧"},
+{n:"Spell Twister",notch:2,desc:"Spells cost 25% less Soul",emoji:"🌀"},
+{n:"Shaman Stone",notch:3,desc:"Spells deal 33% more damage",emoji:"🔮"},
+{n:"Grubsong",notch:1,desc:"Gain Soul when taking damage",emoji:"🐛"},
+{n:"Grubberfly's Elegy",notch:3,desc:"Nail shoots projectiles at full health",emoji:"🦋"},
+{n:"Nailmaster's Glory",notch:1,desc:"Nail Arts charge 50% faster",emoji:"⚔️"},
+{n:"Quick Slash",notch:2,desc:"Nail attacks 40% faster",emoji:"💨"},
+{n:"Mark of Pride",notch:3,desc:"Nail range increased by 25%",emoji:"🏷️"},
+{n:"Fragile Strength",notch:3,desc:"Nail damage increased by 50%",emoji:"💪"},
+{n:"Fragile Heart",notch:2,desc:"+2 Masks of health",emoji:"❤️"},
+{n:"Fragile Greed",notch:2,desc:"+50% more Geo from enemies",emoji:"🪙"},
+{n:"Thorns of Agony",notch:1,desc:"Thorns burst out when taking damage",emoji:"🌹"},
+{n:"Steady Body",notch:1,desc:"No recoil from nail strikes",emoji:"🧱"},
+{n:"Defenders Crest",notch:1,desc:"Toxic aura damages nearby enemies",emoji:"🛡️"},
+{n:"Flukenest",notch:3,desc:"Vengeful Spirit becomes a Fluke swarm",emoji:"🪱"},
+{n:"Glowing Womb",notch:2,desc:"Spawn hatchlings that chase enemies",emoji:"🥚"},
+{n:"Weaversong",notch:2,desc:"Summons weaverlings that attack",emoji:"🕷️"},
+{n:"Shape of Unn",notch:2,desc:"Move while focusing (healing)",emoji:"🦎"},
+{n:"Isma's Tear",notch:1,desc:"Swim in acid without taking damage",emoji:"💧"},
+{n:"Dreamshield",notch:3,desc:"Orbiting shield blocks projectiles",emoji:"🌙"},
+{n:"Bold Bug",notch:1,desc:"Deal more damage at low health",emoji:"🪲"},
+{n:"Sprintmaster",notch:1,desc:"Run 20% faster",emoji:"🏃"},
+{n:"Dream Wielder",notch:1,desc:"Dream Nail charges 50% faster",emoji:"💭"},
+{n:"Deep Focus",notch:4,desc:"Focus heals double but is 65% slower",emoji:"🧘"},
+{n:"Void Heart",notch:0,desc:"Unifies the Void within. Story-critical.",emoji:"🖤"}
+];
+
+const AREAS=[
+{n:"Forgotten Crossroads",emoji:"🕳️",desc:"Starting area. Find the map, benches, and early geo chests."},
+{n:"Greenpath",emoji:"🌿",desc:"Lush vegetation. Fight Hornet, find Mothwing Cloak route."},
+{n:"Fungal Wastes",emoji:"🍄",desc:"Mantis territory. Mantis Claw for wall jumping."},
+{n:"Crystal Peak",emoji:"💎",desc:"Mining area. Crystal Heart for super dash. Desolate Dive."},
+{n:"City of Tears",emoji:"🌧️",desc:"Central hub. Soul Master fight. Many benches and shops."},
+{n:"Resting Grounds",emoji:"⚰️",desc:"Dream Nail location. Essential for progression."},
+{n:"Royal Waterways",emoji:"🚰",desc:"Underground pipes. Dung Defender, Isma's Tear."},
+{n:"Deepnest",emoji:"🕷️",desc:"Terrifying darkness. Tram pass, Nosk, Mask Shard."},
+{n:"Kingdom's Edge",emoji:"⚔️",desc:"Stormy borderland. Hornet Protector, King's Brand."},
+{n:"Queen's Gardens",emoji:"🌸",desc:"Beautiful but deadly. Traitor Lord, Mask Shard."},
+{n:"Ancient Basin",emoji:"🦴",desc:"Desolate depths. Monarch Wings (double jump). Broken Vessel."},
+{n:"The Hive",emoji:"🐝",desc:"Bonus area. Hive Knight boss, Mask Shard."},
+{n:"Godhome",emoji:"🏟️",desc:"Boss rush arena. God Tamer, Pure Vessel, all boss variants."},
+{n:"White Palace",emoji:"🏰",desc:"Extreme platforming challenge. Path of Pain optional."},
+{n:"The Abyss",emoji:"🕳️",desc:"Void Heart ability. Required for true ending."},
+{n:"Dirtmouth",emoji:"🏡",desc:"Safe haven above ground. Grimm troupe, endgame NPCs."}
+];
+
+const ABILITIES=[
+{n:"Mothwing Cloak (Dash)",emoji:"💨",desc:"Dash forward. Obtained from Hornet in Greenpath.",loc:"Greenpath"},
+{n:"Mantis Claw (Wall Jump)",emoji:"🧗",desc:"Cling to and jump off walls. From Mantis Village.",loc:"Fungal Wastes"},
+{n:"Crystal Heart (Super Dash)",emoji:"💎",desc:"Charge and launch across gaps. Crystal Peak.",loc:"Crystal Peak"},
+{n:"Monarch Wings (Double Jump)",emoji:"🦋",desc:"Jump again mid-air. Ancient Basin.",loc:"Ancient Basin"},
+{n:"Shade Cloak (Shadow Dash)",emoji:"🖤",desc:"Dash through enemies and attacks. The Abyss.",loc:"The Abyss"},
+{n:"Isma's Tear (Acid Swim)",emoji:"💧",desc:"Swim in acid safely. Royal Waterways.",loc:"Royal Waterways"},
+{n:"Dream Nail",emoji:"💭",desc:"Strike enemies for Soul, read minds. Resting Grounds.",loc:"Resting Grounds"},
+{n:"Awoken Dream Nail",emoji:"✨",desc:"Upgraded Dream Nail. Collect 1800 Essence.",loc:"Seer Reward"},
+{n:"Void Heart",emoji:"🖤",desc:"Unify the Void. Required for true ending.",loc:"The Abyss"},
+{n:"Vengeful Spirit",emoji:"🔥",desc:"Fire a spell projectile. Snail Shaman reward.",loc:"Forgotten Crossroads"},
+{n:"Desolate Dive",emoji:"⬇️",desc:"Slam downward with i-frames. Crystal Peak.",loc:"Crystal Peak"},
+{n:"Abyss Shriek",emoji:"🔊",desc:"Upward scream spell. Upgrade at bottom of Abyss.",loc:"The Abyss"}
+];
+
+const WALKTHROUGH=[
+{step:1,area:"Forgotten Crossroads",emoji:"🕳️",tasks:["Explore the Crossroads, find benches and Grubs","Defeat False Knight for a Mask Shard","Get Vengeful Spirit from Snail Shaman","Find the Stag Station for fast travel"]},
+{step:2,area:"Greenpath",emoji:"🌿",tasks:["Fight Hornet for Mothwing Cloak (Dash)","Find Cornifer and buy the map","Rescue Grubs for rewards","Get Mothwing Cloak — this changes everything"]},
+{step:3,area:"Fungal Wastes",emoji:"🍄",tasks:["Get Mantis Claw (Wall Jump) from Mantis Village","Defeat Mantis Lords for a Mask Shard","Open the path to City of Tears","Rescue more Grubs and collect Geo"]},
+{step:4,area:"Crystal Peak",emoji:"💎",tasks:["Get Crystal Heart (Super Dash)","Learn Desolate Dive spell","Defeat Crystal Guardian","Buy maps and upgrade your Nail"]},
+{step:5,area:"City of Tears",emoji:"🌧️",tasks:["Defeat Soul Master for Desolate Dive upgrade","Find the Soul Sanctum and shops","Buy the Lumafly Lantern for dark areas","Start collecting Mask Shards actively"]},
+{step:6,area:"Resting Grounds",emoji:"⚰️",tasks:["Obtain the Dream Nail","Begin collecting Essence for Seer rewards","Access Dream Bosses for bonus rewards"]},
+{step:7,area:"Royal Waterways",emoji:"🚰",tasks:["Defeat Dung Defender","Get Isma's Tear (acid swim ability)","Find the map and Grubs","Access the failed tramway"]},
+{step:8,area:"Deepnest",emoji:"🕷️",tasks:["Survive the darkness (use Lantern!)","Get the Tram Pass","Defeat Nosk if you're ready","Find the Mask Shard near the Tram"]},
+{step:9,area:"Ancient Basin",emoji:"🦴",tasks:["Get Monarch Wings (Double Jump)","Defeat Broken Vessel","Access the White Palace entrance","Find the Shadow Cloak path"]},
+{step:10,area:"Kingdom's Edge",emoji:"⚔️",tasks:["Defeat Hornet (Protector) for King's Brand","Access the Colosseum for Geo and Charms","Train for harder fights ahead"]},
+{step:11,area:"The Abyss",emoji:"🕳️",tasks:["Get Shade Cloak (Shadow Dash)","Get Void Heart for true ending","Upgrade Vengeful Spirit to Abyss Shriek","Prepare for the final areas"]},
+{step:12,area:"Endgame",emoji:"🏆",tasks:["Complete White Palace (or Path of Pain for masochists)","Defeat Watcher Knights, Uumuu, Traitor Lord","Choose your ending: normal, Dream No More, or Godhome","Take on Godhome boss rushes for the ultimate challenge"]}
+];
+
+// ===================== STATE =====================
+let bossState=JSON.parse(localStorage.getItem('hk_bosses')||'{}');
+let charmState=JSON.parse(localStorage.getItem('hk_charms')||'[]');
+let areaState=JSON.parse(localStorage.getItem('hk_areas')||'{}');
+let abilityState=JSON.parse(localStorage.getItem('hk_abilities')||'{}');
+
+function save(){
+  localStorage.setItem('hk_bosses',JSON.stringify(bossState));
+  localStorage.setItem('hk_charms',JSON.stringify(charmState));
+  localStorage.setItem('hk_areas',JSON.stringify(areaState));
+  localStorage.setItem('hk_abilities',JSON.stringify(abilityState));
+}
+
+// ===================== RENDER BOSSES =====================
+function renderBosses(){
+  const grid=document.getElementById('bossGrid');
+  const defeated=BOSSES.filter((_,i)=>bossState[i]).length;
+  document.getElementById('bossCount').textContent=`${defeated} / ${BOSSES.length}`;
+  document.getElementById('bossBar').style.width=`${(defeated/BOSSES.length)*100}%`;
+  
+  grid.innerHTML=BOSSES.map((b,i)=>{
+    const isDef=bossState[i];
+    const diffColors=['#22c55e','#22c55e','#22c55e','#f59e0b','#f59e0b','#f59e0b','#ef4444','#ef4444','#ef4444','#7c3aed','#7c3aed'];
+    const diffLabels=['','Easy','Easy','Medium','Medium','Hard','Hard','Very Hard','Very Hard','Extreme','Extreme'];
+    return `<div class="boss-row ${isDef?'defeated':''}" onclick="toggleBoss(${i})">
+      <div class="w-10 h-10 rounded-xl flex items-center justify-center text-xl flex-shrink-0" style="background:${isDef?'rgba(99,102,241,.1)':'rgba(124,130,160,.08)'}">${b.emoji}</div>
+      <div class="flex-1 min-w-0">
+        <div class="flex items-center gap-2 flex-wrap">
+          <span class="text-sm font-semibold text-hk-text">${b.n}</span>
+          ${b.dream?'<span class="text-[9px] px-1.5 py-0.5 rounded-full bg-violet-500/15 text-violet-300 font-semibold">Dream</span>':''}
+          ${isDef?'<span class="text-[9px] px-1.5 py-0.5 rounded-full bg-indigo-500/15 text-indigo-300 font-semibold">✓ Defeated</span>':''}
+        </div>
+        <div class="flex items-center gap-3 mt-1">
+          <span class="text-[11px] text-hk-muted">${b.area}</span>
+          <span class="text-[11px] text-hk-muted">HP: ${b.hp.toLocaleString()}</span>
+        </div>
+        <div class="flex items-center gap-2 mt-1.5">
+          <div class="diff-bar"><div class="diff-fill" style="width:${b.diff*10}%;background:${diffColors[b.diff]||'#7c3aed'}"></div></div>
+          <span class="text-[10px] font-semibold" style="color:${diffColors[b.diff]||'#7c3aed'}">${diffLabels[b.diff]||'Extreme'}</span>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function toggleBoss(i){bossState[i]=!bossState[i];save();renderBosses()}
+
+// ===================== RENDER CHARMS =====================
+function renderCharms(){
+  const grid=document.getElementById('charmGrid');
+  const usedNotch=CHARMS.filter((_,i)=>charmState.includes(i)).reduce((s,i)=>s+CHARMS[i].notch,0);
+  const maxNotch=11;
+  
+  document.getElementById('notchCount').textContent=`${usedNotch} / ${maxNotch}`;
+  document.getElementById('notchDisplay').innerHTML=Array.from({length:maxNotch},(_,i)=>`<div class="notch ${i<usedNotch?'filled':''}"></div>`).join('');
+  
+  grid.innerHTML=CHARMS.map((c,i)=>{
+    const eq=charmState.includes(i);
+    const canEquip=!eq&&usedNotch+c.notch<=maxNotch;
+    return `<div class="charm-card ${eq?'equipped':''} ${!eq&&!canEquip?'opacity-40':''}" onclick="toggleCharm(${i})">
+      <div class="flex items-center gap-2 mb-1.5">
+        <span class="text-lg">${c.emoji}</span>
+        <div class="flex-1 min-w-0">
+          <div class="text-xs font-semibold text-hk-text truncate">${c.n}</div>
+          <div class="text-[10px] text-hk-muted">${c.notch===0?'Free':c.notch+' Notch'+(c.notch>1?'es':'')}</div>
+        </div>
+        ${eq?'<span class="text-[9px] px-1.5 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300 font-semibold flex-shrink-0">ON</span>':''}
+      </div>
+      <p class="text-[11px] text-hk-muted leading-relaxed">${c.desc}</p>
+    </div>`;
+  }).join('');
+}
+
+function toggleCharm(i){
+  const idx=charmState.indexOf(i);
+  if(idx>-1){charmState.splice(idx,1)}
+  else{
+    const used=charmState.reduce((s,ci)=>s+CHARMS[ci].notch,0);
+    if(used+CHARMS[i].notch>11)return;
+    charmState.push(i);
+  }
+  save();renderCharms();
+}
+
+// ===================== RENDER AREAS =====================
+function renderAreas(){
+  const list=document.getElementById('areaList');
+  const done=AREAS.filter((_,i)=>areaState[i]).length;
+  document.getElementById('areaCount').textContent=`${done} / ${AREAS.length}`;
+  document.getElementById('areaBar').style.width=`${(done/AREAS.length)*100}%`;
+  
+  list.innerHTML=AREAS.map((a,i)=>{
+    const checked=areaState[i];
+    return `<div class="flex items-start gap-3 p-4 rounded-xl border cursor-pointer transition-all hover:border-indigo-500/30" style="background:#151823;border-color:${checked?'#6366f1':'#1e2235'}" onclick="toggleArea(${i})">
+      <div class="check-box ${checked?'done':''}" style="margin-top:2px">${checked?'✓':''}</div>
+      <div class="flex-1">
+        <div class="flex items-center gap-2"><span class="text-base">${a.emoji}</span><span class="text-sm font-semibold ${checked?'text-hk-muted line-through':'text-hk-text'}">${a.n}</span></div>
+        <p class="text-[11px] text-hk-muted mt-1 leading-relaxed">${a.desc}</p>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function toggleArea(i){areaState[i]=!areaState[i];save();renderAreas()}
+
+// ===================== RENDER ABILITIES =====================
+function renderAbilities(){
+  const list=document.getElementById('abilityList');
+  const done=ABILITIES.filter((_,i)=>abilityState[i]).length;
+  document.getElementById('abilityCount').textContent=`${done} / ${ABILITIES.length}`;
+  document.getElementById('abilityBar').style.width=`${(done/ABILITIES.length)*100}%`;
+  
+  list.innerHTML=ABILITIES.map((a,i)=>{
+    const checked=abilityState[i];
+    return `<div class="flex items-start gap-3 p-4 rounded-xl border cursor-pointer transition-all hover:border-indigo-500/30" style="background:#151823;border-color:${checked?'#6366f1':'#1e2235'}" onclick="toggleAbility(${i})">
+      <div class="check-box ${checked?'done':''}" style="margin-top:2px">${checked?'✓':''}</div>
+      <div class="flex-1">
+        <div class="flex items-center gap-2 flex-wrap"><span class="text-base">${a.emoji}</span><span class="text-sm font-semibold ${checked?'text-hk-muted line-through':'text-hk-text'}">${a.n}</span><span class="text-[9px] px-1.5 py-0.5 rounded-full bg-hk-border text-hk-muted">${a.loc}</span></div>
+        <p class="text-[11px] text-hk-muted mt-1 leading-relaxed">${a.desc}</p>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function toggleAbility(i){abilityState[i]=!abilityState[i];save();renderAbilities()}
+
+// ===================== RENDER WALKTHROUGH =====================
+function renderWalkthrough(){
+  document.getElementById('walkthroughList').innerHTML=WALKTHROUGH.map(w=>`
+    <div class="flex gap-4">
+      <div class="flex flex-col items-center">
+        <div class="w-10 h-10 rounded-xl bg-indigo-500/15 flex items-center justify-center text-lg font-display font-bold text-indigo-400 flex-shrink-0">${w.step}</div>
+        <div class="w-px flex-1 bg-hk-border mt-2"></div>
+      </div>
+      <div class="pb-6 flex-1">
+        <h3 class="font-display font-bold text-hk-text flex items-center gap-2 mb-2">${w.emoji} ${w.area}</h3>
+        <ul class="space-y-1.5">
+          ${w.tasks.map(t=>`<li class="flex items-start gap-2 text-sm text-hk-muted"><span class="text-indigo-400 mt-0.5">→</span>${t}</li>`).join('')}
+        </ul>
+      </div>
+    </div>`).join('');
+}
+
+// ===================== TAB NAV =====================
+function setTab(el){
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('on'));
+  el.classList.add('on');
+}
+
+// ===================== INIT =====================
+document.addEventListener('DOMContentLoaded',()=>{
+  renderBosses();renderCharms();renderAreas();renderAbilities();renderWalkthrough();
+  lucide.createIcons();
+});
+</script>
+</body>
+</html>
