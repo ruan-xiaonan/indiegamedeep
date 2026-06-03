@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Hollow Knight: Silksong Complete Guide - Abilities, Areas, Enemies & Everything We Know | IndieGameDeep</title>
+<meta name="description" content="Everything we know about Hollow Knight: Silksong. Interactive tracker for confirmed abilities, enemies, areas and bosses. Release date info, gameplay mechanics, and comparison with Hollow Knight.">
+<meta name="keywords" content="Hollow Knight Silksong, Silksong guide, Silksong release date, Silksong abilities, Silksong enemies, Hornet gameplay, Pharloom, Team Cherry">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="http://www.indiegamedeep.com/hollow_knight_silksong_guide/">
+<link rel="alternate" hreflang="en" href="http://www.indiegamedeep.com/hollow_knight_silksong_guide/">
+<meta property="og:title" content="Hollow Knight: Silksong - Everything We Know | IndieGameDeep">
+<meta property="og:description" content="Complete guide to Hollow Knight: Silksong. Track confirmed abilities, enemies, areas and more.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="IndieGameDeep">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GQ6312XDZ1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-GQ6312XDZ1');
+</script>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>tailwind.config={theme:{extend:{fontFamily:{sans:['Inter','sans-serif'],display:['Space Grotesk','sans-serif']},colors:{brand:{50:'#f0fdf4',100:'#dcfce7',200:'#bbf7d0',500:'#22c55e',600:'#16a34a',700:'#15803d'},ss:{bg:'#0c0a08',card:'#171310',border:'#2a231c',accent:'#d97706',accentLight:'#fbbf24',accentDim:'#92400e',muted:'#9c8e80',text:'#ede5db',gold:'#f59e0b',goldDark:'#b45309'}}}}}</script>
+<style>
+*{-webkit-tap-highlight-color:transparent;-webkit-touch-callout:none}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:#f8fafc;color:#1e293b;overscroll-behavior:none}
+.font-display{font-family:'Space Grotesk',sans-serif}
+.ss-dark{background:#0c0a08;color:#ede5db}
+.ss-card{background:#171310;border:1px solid #2a231c;border-radius:16px;transition:all .2s}
+.ss-card:hover{border-color:#d97706;box-shadow:0 0 20px rgba(217,119,6,.06)}
+@media(hover:none){.ss-card:hover{border-color:#2a231c;box-shadow:none}}
+.badge{display:inline-flex;align-items:center;padding:4px 12px;border-radius:9999px;font-size:12px;font-weight:600}
+.btn-ss{background:linear-gradient(135deg,#d97706,#b45309);color:#fff;padding:12px 28px;border-radius:12px;font-weight:600;transition:all .2s;min-height:44px;display:inline-flex;align-items:center;gap:8px}.btn-ss:hover{opacity:.9}
+@media(max-width:640px){.btn-ss{padding:12px 20px;font-size:14px;width:100%;justify-content:center}}
+.tab-btn{padding:8px 14px;border-radius:10px;font-size:13px;font-weight:500;cursor:pointer;transition:all .15s;border:1px solid transparent;background:transparent;color:#9c8e80;white-space:nowrap;-webkit-user-select:none;user-select:none;min-height:40px}.tab-btn:hover{color:#ede5db;background:rgba(217,119,6,.08)}.tab-btn.on{background:rgba(217,119,6,.12);color:#fbbf24;border-color:rgba(217,119,6,.25)}
+.check-box{width:22px;height:22px;border-radius:6px;border:2px solid #2a231c;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0;font-size:11px;min-width:22px}.check-box.done{background:#d97706;border-color:#d97706;color:#fff}
+.enemy-card{padding:12px;border-radius:12px;border:1px solid #2a231c;cursor:pointer;transition:all .15s;background:#171310;-webkit-user-select:none;user-select:none;min-height:44px}.enemy-card:hover{border-color:#d97706}.enemy-card.confirmed{border-color:#d97706;background:rgba(217,119,6,.06)}
+@media(hover:none){.enemy-card:hover{border-color:#2a231c}.enemy-card:active{border-color:#d97706;background:rgba(217,119,6,.04)}}
+.compare-row{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:center;padding:12px 0;border-bottom:1px solid #2a231c}
+.compare-row:last-child{border-bottom:none}
+@media(max-width:480px){.compare-row{grid-template-columns:1fr;gap:4px}.compare-row .vs-badge{justify-self:center}}
+.section-anchor{scroll-margin-top:70px}
+.scrollbar-hide::-webkit-scrollbar{display:none}.scrollbar-hide{-ms-overflow-style:none;scrollbar-width:none}
+.bottom-nav{display:none}
+@media(max-width:767px){.bottom-nav{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:50;background:#171310;border-top:1px solid #2a231c;padding:6px 0;padding-bottom:max(6px,env(safe-area-inset-bottom))}.bottom-nav-item{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 0;color:#9c8e80;transition:color .15s;-webkit-user-select:none;user-select:none;min-height:44px;justify-content:center;text-decoration:none}.bottom-nav-item.active{color:#fbbf24}.bottom-nav-item span{font-size:10px;font-weight:500}.main-content{padding-bottom:80px}}
+.silk-line{height:1px;background:linear-gradient(90deg,transparent,#d97706,transparent)}
+.timeline-dot{width:12px;height:12px;border-radius:50%;border:2px solid #d97706;background:#0c0a08;flex-shrink:0;z-index:1}.timeline-dot.filled{background:#d97706}
+</style>
+</head>
+<body class="antialiased">
+
+<!-- ===== TOP NAVBAR ===== -->
+<header class="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-slate-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-14">
+<a href="http://www.indiegamedeep.com/" class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-lg bg-brand-600 flex items-center justify-center"><i data-lucide="gamepad-2" class="w-4 h-4 text-white"></i></div>
+<span class="font-display text-lg font-bold text-slate-900">IndieGame<span class="text-brand-600">Deep</span></span>
+</a>
+<nav class="hidden md:flex items-center gap-6">
+<a href="http://www.indiegamedeep.com/" class="text-sm font-medium text-slate-500 hover:text-brand-600 transition">Home</a>
+<a href="http://www.indiegamedeep.com/stardew_valley_guide/" class="text-sm font-medium text-slate-500 hover:text-brand-600 transition">Stardew Valley</a>
+<a href="http://www.indiegamedeep.com/hollow_knight_guide/" class="text-sm font-medium text-slate-500 hover:text-brand-600 transition">Hollow Knight</a>
+<a href="#" class="text-sm font-medium text-amber-600 border-b-2 border-amber-500 pb-0.5">Silksong</a>
+</nav>
+<button onclick="document.getElementById('mMenu').classList.toggle('hidden')" class="md:hidden w-10 h-10 rounded-lg flex items-center justify-center hover:bg-slate-100 active:bg-slate-200" aria-label="Menu"><i data-lucide="menu" class="w-5 h-5 text-slate-600"></i></button>
+</div></div>
+<div id="mMenu" class="hidden md:hidden border-t border-slate-200 bg-white px-4 pb-3 pt-2 space-y-1">
+<a href="http://www.indiegamedeep.com/" class="block py-2.5 px-3 rounded-lg text-sm font-medium hover:bg-brand-50 text-slate-700">🏠 Home</a>
+<a href="http://www.indiegamedeep.com/stardew_valley_guide/" class="block py-2.5 px-3 rounded-lg text-sm font-medium hover:bg-brand-50 text-slate-700">🌾 Stardew Valley</a>
+<a href="http://www.indiegamedeep.com/hollow_knight_guide/" class="block py-2.5 px-3 rounded-lg text-sm font-medium hover:bg-indigo-50 text-indigo-700">🦋 Hollow Knight</a>
+<a href="#" class="block py-2.5 px-3 rounded-lg text-sm font-medium bg-amber-50 text-amber-700">🧵 Silksong</a>
+</div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="ss-dark relative overflow-hidden">
+<div class="absolute inset-0" style="background:radial-gradient(ellipse at 25% 15%,rgba(217,119,6,.1),transparent 55%),radial-gradient(ellipse at 75% 85%,rgba(180,83,9,.06),transparent 50%)"></div>
+<div class="absolute top-0 right-0 w-[500px] h-[400px] bg-amber-500/4 rounded-full blur-3xl"></div>
+<div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 md:py-28">
+<div class="max-w-3xl">
+<div class="badge bg-amber-500/15 text-amber-300 mb-4 sm:mb-5">🧵 Everything We Know So Far</div>
+<h1 class="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.08] mb-4 sm:mb-5">
+Hollow Knight:<br><span class="text-amber-400">Silksong</span>
+</h1>
+<p class="text-base sm:text-lg text-ss-muted leading-relaxed mb-6 sm:mb-8 max-w-xl">All confirmed abilities, enemies, areas, and mechanics. Track what we know, prepare for Pharloom. Updated as new info drops.</p>
+<div class="flex flex-col sm:flex-row gap-3">
+<a href="#abilities" class="btn-ss"><i data-lucide="zap" class="w-4 h-4"></i> Confirmed Abilities</a>
+<a href="#compare" class="btn-ss" style="background:transparent;border:1px solid #2a231c;color:#ede5db"><i data-lucide="git-compare" class="w-4 h-4"></i> vs Hollow Knight</a>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ===== SECTION TABS ===== -->
+<section class="ss-dark border-t border-ss-border sticky top-14 z-40" id="sectionTabs">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex gap-2 overflow-x-auto py-3 scrollbar-hide -mx-4 px-4 sm:mx-0 sm:px-0">
+<a href="#abilities" class="tab-btn on" onclick="setTab(this)">✨ Abilities</a>
+<a href="#enemies" class="tab-btn" onclick="setTab(this)">👹 Enemies</a>
+<a href="#areas" class="tab-btn" onclick="setTab(this)">🗺️ Areas</a>
+<a href="#mechanics" class="tab-btn" onclick="setTab(this)">⚙️ Mechanics</a>
+<a href="#compare" class="tab-btn" onclick="setTab(this)">⚖️ Compare</a>
+<a href="#timeline" class="tab-btn" onclick="setTab(this)">📅 Timeline</a>
+</div>
+</div>
+</section>
+
+<!-- ===== MAIN CONTENT ===== -->
+<main class="ss-dark main-content">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 space-y-12 sm:space-y-16">
+
+<!-- ===== ABILITIES ===== -->
+<section id="abilities" class="section-anchor">
+<div class="flex items-center justify-between mb-5 sm:mb-6 flex-wrap gap-3">
+<div>
+<h2 class="font-display text-xl sm:text-2xl md:text-3xl font-bold text-ss-text">Confirmed Abilities</h2>
+<p class="text-xs sm:text-sm text-ss-muted mt-1">Everything Hornet can do — revealed so far</p>
+</div>
+<div class="flex items-center gap-3">
+<span id="abilityCount" class="text-xs sm:text-sm font-semibold text-amber-400">0/14</span>
+<div class="w-24 sm:w-32 h-2 rounded-full bg-ss-border overflow-hidden"><div id="abilityBar" class="h-full rounded-full bg-amber-500 transition-all duration-500" style="width:0%"></div></div>
+</div>
+</div>
+<div id="abilityList" class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3"></div>
+</section>
+
+<!-- ===== ENEMIES ===== -->
+<section id="enemies" class="section-anchor">
+<div class="flex items-center justify-between mb-5 sm:mb-6 flex-wrap gap-3">
+<div>
+<h2 class="font-display text-xl sm:text-2xl md:text-3xl font-bold text-ss-text">Confirmed Enemies & Bosses</h2>
+<p class="text-xs sm:text-sm text-ss-muted mt-1">Tap to mark as seen in trailers · 24 revealed</p>
+</div>
+<div class="flex items-center gap-3">
+<span id="enemyCount" class="text-xs sm:text-sm font-semibold text-amber-400">0/24</span>
+<div class="w-24 sm:w-32 h-2 rounded-full bg-ss-border overflow-hidden"><div id="enemyBar" class="h-full rounded-full bg-amber-500 transition-all duration-500" style="width:0%"></div></div>
+</div>
+</div>
+<div id="enemyGrid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2.5 sm:gap-3"></div>
+</section>
+
+<!-- ===== AREAS ===== -->
+<section id="areas" class="section-anchor">
+<div class="flex items-center justify-between mb-5 sm:mb-6 flex-wrap gap-3">
+<div>
+<h2 class="font-display text-xl sm:text-2xl md:text-3xl font-bold text-ss-text">Confirmed Areas</h2>
+<p class="text-xs sm:text-sm text-ss-muted mt-1">The kingdom of Pharloom awaits</p>
+</div>
+<div class="flex items-center gap-3">
+<span id="areaCount" class="text-xs sm:text-sm font-semibold text-amber-400">0/8</span>
+<div class="w-24 sm:w-32 h-2 rounded-full bg-ss-border overflow-hidden"><div id="areaBar" class="h-full rounded-full bg-amber-500 transition-all duration-500" style="width:0%"></div></div>
+</div>
+</div>
+<div id="areaList" class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3"></div>
+</section>
+
+<!-- ===== MECHANICS ===== -->
+<section id="mechanics" class="section-anchor">
+<h2 class="font-display text-xl sm:text-2xl md:text-3xl font-bold text-ss-text mb-5 sm:mb-6">New Mechanics</h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-5">
+
+<div class="ss-card p-5 sm:p-6">
+<div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-amber-500/15 flex items-center justify-center mb-3 sm:mb-4"><span class="text-lg sm:text-xl">🧵</span></div>
+<h3 class="font-display font-bold text-ss-text text-sm sm:text-base mb-1.5 sm:mb-2">Silk System</h3>
+<p class="text-xs sm:text-sm text-ss-muted leading-relaxed">Hornet uses Silk as a resource for abilities and healing. Unlike the Knight's Soul, Silk is gathered through combat and environmental interaction. It powers her signature moves and tools.</p>
+</div>
+
+<div class="ss-card p-5 sm:p-6">
+<div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-amber-500/15 flex items-center justify-center mb-3 sm:mb-4"><span class="text-lg sm:text-xl">🔧</span></div>
+<h3 class="font-display font-bold text-ss-text text-sm sm:text-base mb-1.5 sm:mb-2">Crafting</h3>
+<p class="text-xs sm:text-sm text-ss-muted leading-relaxed">A brand-new crafting system lets Hornet create weapons, tools, and traps from materials found across Pharloom. This adds a strategic layer not present in the original Hollow Knight.</p>
+</div>
+
+<div class="ss-card p-5 sm:p-6">
+<div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-amber-500/15 flex items-center justify-center mb-3 sm:mb-4"><span class="text-lg sm:text-xl">🗡️</span></div>
+<h3 class="font-display font-bold text-ss-text text-sm sm:text-base mb-1.5 sm:mb-2">Weapon Variety</h3>
+<p class="text-xs sm:text-sm text-ss-muted leading-relaxed">Unlike the Knight's single Nail, Hornet can wield multiple weapon types including her signature needle and thread. Different weapons may offer different attack patterns and ranges.</p>
+</div>
+
+<div class="ss-card p-5 sm:p-6">
+<div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-amber-500/15 flex items-center justify-center mb-3 sm:mb-4"><span class="text-lg sm:text-xl">🪤</span></div>
+<h3 class="font-display font-bold text-ss-text text-sm sm:text-base mb-1.5 sm:mb-2">Trap System</h3>
+<p class="text-xs sm:text-sm text-ss-muted leading-relaxed">Hornet can set traps using Silk and crafted items. This defensive tool allows for strategic combat setups, letting you lure enemies into prepared positions.</p>
+</div>
+
+<div class="ss-card p-5 sm:p-6">
+<div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-amber-500/15 flex items-center justify-center mb-3 sm:mb-4"><span class="text-lg sm:text-xl">🏃</span></div>
+<h3 class="font-display font-bold text-ss-text text-sm sm:text-base mb-1.5 sm:mb-2">Faster Movement</h3>
+<p class="text-xs sm:text-sm text-ss-muted leading-relaxed">Hornet is significantly more agile than the Knight. She runs faster, can grapple to surfaces, and has more aerial options. Platforming sections will be more dynamic and demanding.</p>
+</div>
+
+<div class="ss-card p-5 sm:p-6">
+<div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-amber-500/15 flex items-center justify-center mb-3 sm:mb-4"><span class="text-lg sm:text-xl">🏆</span></div>
+<h3 class="font-display font-bold text-ss-text text-sm sm:text-base mb-1.5 sm:mb-2">Quest System</h3>
+<p class="text-xs sm:text-sm text-ss-muted leading-relaxed">Silksong features a more formal quest system compared to the original. Hornet can take on tasks from NPCs across Pharloom, adding structure to exploration while maintaining freedom.</p>
+</div>
+
+</div>
+</section>
+
+<!-- ===== COMPARE ===== -->
+<section id="compare" class="section-anchor">
+<h2 class="font-display text-xl sm:text-2xl md:text-3xl font-bold text-ss-text mb-5 sm:mb-6">Silksong vs Hollow Knight</h2>
+<div class="ss-card p-5 sm:p-6 md:p-8 overflow-x-auto">
+<table class="w-full text-xs sm:text-sm min-w-[400px]">
+<thead>
+<tr class="border-b border-ss-border">
+<th class="text-left py-3 pr-3 text-ss-muted font-medium">Feature</th>
+<th class="text-center py-3 px-3"><span class="text-indigo-400 font-semibold">Hollow Knight</span></th>
+<th class="text-center py-3 pl-3"><span class="text-amber-400 font-semibold">Silksong</span></th>
+</tr>
+</thead>
+<tbody id="compareBody"></tbody>
+</table>
+</div>
+</section>
+
+<!-- ===== TIMELINE ===== -->
+<section id="timeline" class="section-anchor">
+<h2 class="font-display text-xl sm:text-2xl md:text-3xl font-bold text-ss-text mb-5 sm:mb-6">Development Timeline</h2>
+<div class="ss-card p-5 sm:p-6 md:p-8">
+<div class="space-y-0" id="timelineList"></div>
+</div>
+</section>
+
+<!-- ===== RELEASE INFO ===== -->
+<section id="release" class="section-anchor">
+<h2 class="font-display text-xl sm:text-2xl md:text-3xl font-bold text-ss-text mb-5 sm:mb-6">Release Information</h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-5">
+<div class="ss-card p-5 sm:p-6">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 rounded-xl bg-amber-500/15 flex items-center justify-center"><i data-lucide="calendar" class="w-5 h-5 text-amber-400"></i></div>
+<h3 class="font-display font-bold text-ss-text text-sm sm:text-base">Release Date</h3>
+</div>
+<p class="text-xs sm:text-sm text-ss-muted leading-relaxed mb-3">Originally announced for 2023, Silksong has been delayed. Team Cherry has not confirmed a new date. As of 2025, the game is still in active development.</p>
+<div class="flex items-center gap-2"><span class="badge bg-amber-500/15 text-amber-300">TBA</span><span class="badge bg-ss-border text-ss-muted">No pre-orders yet</span></div>
+</div>
+<div class="ss-card p-5 sm:p-6">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 rounded-xl bg-amber-500/15 flex items-center justify-center"><i data-lucide="monitor" class="w-5 h-5 text-amber-400"></i></div>
+<h3 class="font-display font-bold text-ss-text text-sm sm:text-base">Platforms</h3>
+</div>
+<p class="text-xs sm:text-sm text-ss-muted leading-relaxed mb-3">Confirmed for PC (Steam), Nintendo Switch, Xbox, and PlayStation. Will be available on Game Pass at launch.</p>
+<div class="flex flex-wrap gap-2"><span class="badge bg-ss-border text-ss-text">🟢 Steam</span><span class="badge bg-ss-border text-ss-text">🎮 Switch</span><span class="badge bg-ss-border text-ss-text"> Xbox</span><span class="badge bg-ss-border text-ss-text"> PlayStation</span></div>
+</div>
+<div class="ss-card p-5 sm:p-6">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 rounded-xl bg-amber-500/15 flex items-center justify-center"><i data-lucide="tag" class="w-5 h-5 text-amber-400"></i></div>
+<h3 class="font-display font-bold text-ss-text text-sm sm:text-base">Price</h3>
+</div>
+<p class="text-xs sm:text-sm text-ss-muted leading-relaxed mb-3">Price has not been officially announced. Hollow Knight launched at $15. Given the expanded scope, expect a higher price point — likely $25–$30.</p>
+<div class="flex items-center gap-2"><span class="badge bg-amber-500/15 text-amber-300">Est. $25–30</span></div>
+</div>
+<div class="ss-card p-5 sm:p-6">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 rounded-xl bg-amber-500/15 flex items-center justify-center"><i data-lucide="users" class="w-5 h-5 text-amber-400"></i></div>
+<h3 class="font-display font-bold text-ss-text text-sm sm:text-base">Developer</h3>
+</div>
+<p class="text-xs sm:text-sm text-ss-muted leading-relaxed mb-3">Developed by Team Cherry (Ari Gibson, William Pellen, Jack Vine). The same indie studio behind Hollow Knight. Published independently.</p>
+<div class="flex items-center gap-2"><span class="badge bg-ss-border text-ss-text">🇦🇺 Team Cherry</span><span class="badge bg-ss-border text-ss-text">3-person team</span></div>
+</div>
+</div>
+</section>
+
+<!-- ===== WHAT WE DONT KNOW ===== -->
+<section class="section-anchor">
+<h2 class="font-display text-xl sm:text-2xl md:text-3xl font-bold text-ss-text mb-5 sm:mb-6">What We Still Don't Know</h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3">
+<div class="flex items-start gap-3 p-3.5 sm:p-4 rounded-xl border border-dashed border-ss-border bg-ss-card"><span class="text-base mt-0.5">❓</span><div><span class="text-xs sm:text-sm font-semibold text-ss-text">Exact release date</span><p class="text-[10px] sm:text-[11px] text-ss-muted mt-0.5">No confirmed launch window</p></div></div>
+<div class="flex items-start gap-3 p-3.5 sm:p-4 rounded-xl border border-dashed border-ss-border bg-ss-card"><span class="text-base mt-0.5">❓</span><div><span class="text-xs sm:text-sm font-semibold text-ss-text">Full ability list</span><p class="text-[10px] sm:text-[11px] text-ss-muted mt-0.5">More abilities likely unannounced</p></div></div>
+<div class="flex items-start gap-3 p-3.5 sm:p-4 rounded-xl border border-dashed border-ss-border bg-ss-card"><span class="text-base mt-0.5">❓</span><div><span class="text-xs sm:text-sm font-semibold text-ss-text">Total number of areas</span><p class="text-[10px] sm:text-[11px] text-ss-muted mt-0.5">Map size "doubled" but exact count unknown</p></div></div>
+<div class="flex items-start gap-3 p-3.5 sm:p-4 rounded-xl border border-dashed border-ss-border bg-ss-card"><span class="text-base mt-0.5">❓</span><div><span class="text-xs sm:text-sm font-semibold text-ss-text">Charm/badge system details</span><p class="text-[10px] sm:text-[11px] text-ss-muted mt-0.5">Not confirmed if returning or replaced</p></div></div>
+<div class="flex items-start gap-3 p-3.5 sm:p-4 rounded-xl border border-dashed border-ss-border bg-ss-card"><span class="text-base mt-0.5">❓</span><div><span class="text-xs sm:text-sm font-semibold text-ss-text">Multiplayer or online features</span><p class="text-[10px] sm:text-[11px] text-ss-muted mt-0.5">No mention of any online component</p></div></div>
+<div class="flex items-start gap-3 p-3.5 sm:p-4 rounded-xl border border-dashed border-ss-border bg-ss-card"><span class="text-base mt-0.5">❓</span><div><span class="text-xs sm:text-sm font-semibold text-ss-text">Connection to Hollow Knight's ending</span><p class="text-[10px] sm:text-[11px] text-ss-muted mt-0.5">How endings link to Silksong's story</p></div></div>
+</div>
+</section>
+
+</div>
+</main>
+
+<!-- ===== BOTTOM NAV ===== -->
+<nav class="bottom-nav" id="bottomNav">
+<a href="#abilities" class="bottom-nav-item active" onclick="setBN(this)"><i data-lucide="zap" class="w-5 h-5"></i><span>Abilities</span></a>
+<a href="#enemies" class="bottom-nav-item" onclick="setBN(this)"><i data-lucide="skull" class="w-5 h-5"></i><span>Enemies</span></a>
+<a href="#areas" class="bottom-nav-item" onclick="setBN(this)"><i data-lucide="map" class="w-5 h-5"></i><span>Areas</span></a>
+<a href="#mechanics" class="bottom-nav-item" onclick="setBN(this)"><i data-lucide="settings" class="w-5 h-5"></i><span>Mechanics</span></a>
+<a href="#compare" class="bottom-nav-item" onclick="setBN(this)"><i data-lucide="git-compare" class="w-5 h-5"></i><span>Compare</span></a>
+</nav>
+
+<!-- ===== FOOTER ===== -->
+<footer class="ss-dark border-t border-ss-border mt-12">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
+<div class="grid grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
+<div class="col-span-2 md:col-span-1">
+<div class="flex items-center gap-2 mb-3"><div class="w-7 h-7 rounded-lg bg-brand-600 flex items-center justify-center"><i data-lucide="gamepad-2" class="w-3.5 h-3.5 text-white"></i></div><span class="font-display text-base font-bold text-ss-text">IndieGameDeep</span></div>
+<p class="text-xs text-ss-muted leading-relaxed">Interactive guides for the best indie games.</p>
+</div>
+<div><h4 class="text-ss-text font-semibold text-xs mb-2 uppercase tracking-wider">More Guides</h4><ul class="space-y-1.5 text-xs text-ss-muted"><li><a href="http://www.indiegamedeep.com/stardew_valley_guide/" class="hover:text-amber-400 transition">🌾 Stardew Valley</a></li><li><a href="http://www.indiegamedeep.com/hollow_knight_guide/" class="hover:text-amber-400 transition">🦋 Hollow Knight</a></li><li><a href="#" class="hover:text-amber-400 transition">🧵 Silksong</a></li></ul></div>
+<div><h4 class="text-ss-text font-semibold text-xs mb-2 uppercase tracking-wider">Quick Links</h4><ul class="space-y-1.5 text-xs text-ss-muted"><li><a href="#abilities" class="hover:text-amber-400 transition">Abilities</a></li><li><a href="#enemies" class="hover:text-amber-400 transition">Enemies</a></li><li><a href="#compare" class="hover:text-amber-400 transition">Comparison</a></li></ul></div>
+</div>
+<div class="border-t border-ss-border mt-6 sm:mt-8 pt-4 sm:pt-5 text-center text-[11px] text-ss-muted">&copy; 2025 IndieGameDeep. Hollow Knight: Silksong is a trademark of Team Cherry. This is a fan-made guide.</div>
+</div>
+</footer>
+
+<script>
+// ===================== DATA =====================
+const ABILITIES=[
+{n:"Needle Strike",emoji:"🗡️",desc:"Hornet's signature needle attack. Faster and more versatile than the Knight's Nail, with greater reach and combo potential.",cat:"Combat",confirmed:true},
+{n:"Silk Bind",emoji:"🧵",desc:"Use Silk threads to grapple to anchor points and pull yourself across gaps or up to platforms. Core traversal ability.",cat:"Movement",confirmed:true},
+{n:"Silk Dash",emoji:"💨",desc:"A silk-powered dash that covers more distance than the Knight's Mothwing Cloak. May have different properties.",cat:"Movement",confirmed:true},
+{n:"Aerial Pounce",emoji:"🦅",desc:"Leap forward and strike from above. Hornet's agility allows for more dynamic aerial combat combos.",cat:"Combat",confirmed:true},
+{n:"Heal with Silk",emoji:"💛",desc:"Instead of focusing Soul, Hornet uses Silk to heal. The mechanic is faster but uses a different resource pool.",cat:"Survival",confirmed:true},
+{n:"Grapple Pull",emoji:"🪝",desc:"Latch onto enemies or objects with Silk and pull yourself toward them. Useful for both combat and traversal.",cat:"Movement",confirmed:true},
+{n:"Needle Throw",emoji:"🎯",desc:"Throw the needle as a projectile and recall it. Allows ranged attacks while maintaining melee versatility.",cat:"Combat",confirmed:true},
+{n:"Silk Shield",emoji:"🛡️",desc:"Wrap Silk around yourself for brief protection. May function as a parry mechanic against incoming attacks.",cat:"Defense",confirmed:true},
+{n:"Wall Cling",emoji:"🧗",desc:"Similar to Mantis Claw but faster. Hornet can cling to walls and leap off with silk-enhanced speed.",cat:"Movement",confirmed:true},
+{n:"Craft Tool",emoji:"🔧",desc:"Use gathered materials to craft weapons, traps, and tools on the fly. A completely new mechanic for the series.",cat:"Utility",confirmed:true},
+{n:"Set Trap",emoji:"🪤",desc:"Place Silk-based traps in the environment. Lure enemies into prepared positions for strategic advantage.",cat:"Utility",confirmed:true},
+{n:"Super Dash (Silk)",emoji:"💎",desc:"A silk-boosted charge dash. Likely similar to Crystal Heart but with Silk resource cost and different physics.",cat:"Movement",confirmed:true},
+{n:"Double Jump (Silk)",emoji:"🦋",desc:"A silk-assisted second jump. Expected to feel different from Monarch Wings, possibly more vertical.",cat:"Movement",confirmed:true},
+{n:"Dream Nail (?)",emoji:"💭",desc:"Not confirmed, but likely returns in some form given its story importance. May have new Silk-related properties.",cat:"Story",confirmed:false}
+];
+
+const ENEMIES=[
+{n:"Moss Charger",emoji:"🦎",type:"Enemy",source:"Trailer 1"},
+{n:"Buzzer Swarm",emoji:"🐝",type:"Enemy",source:"Trailer 1"},
+{n:"Shield Shell",emoji:"🐚",type:"Enemy",source:"Trailer 2"},
+{n:"Bell Beast",emoji:"🔔",type:"Boss",source:"Trailer 1"},
+{n:"Silk Spider",emoji:"🕷️",type:"Enemy",source:"Trailer 2"},
+{n:"Pharloom Guard",emoji:"🗡️",type:"Enemy",source:"Trailer 2"},
+{n:"Needle Knight",emoji:"⚔️",type:"Boss",source:"Trailer 2"},
+{n:"Hopper Brood",emoji:"🦗",type:"Enemy",source:"Gameplay"},
+{n:"Crawlid Queen",emoji:"🐛",type:"Boss",source:"Gameplay"},
+{n:"Flower Knight",emoji:"🌸",type:"Boss",source:"Trailer 2"},
+{n:"Lace",emoji:"💃",type:"Boss",source:"Trailer 2"},
+{n:"Giant Buzzer",emoji:"🪰",type:"Enemy",source:"Gameplay"},
+{n:"Bone Heap",emoji:"💀",type:"Enemy",source:"Gameplay"},
+{n:"Serpent God",emoji:"🐍",type:"Boss",source:"Trailer 1"},
+{n:"Silk Weaver",emoji:"🧵",type:"Enemy",source:"Gameplay"},
+{n:"Caged Hornet",emoji:"🔒",type:"Boss",source:"Trailer 2"},
+{n:"Moth Prophet",emoji:"🦋",type:"Boss",source:"Speculated"},
+{n:"Deep Dweller",emoji:"🕳️",type:"Enemy",source:"Gameplay"},
+{n:"Gold Sentinel",emoji:"🏛️",type:"Enemy",source:"Trailer 2"},
+{n:"Thornbeast",emoji:"🌹",type:"Enemy",source:"Gameplay"},
+{n:"Siege Bug",emoji:"🪲",type:"Boss",source:"Trailer 2"},
+{n:"Pharloom Sage",emoji:"📖",type:"Boss",source:"Speculated"},
+{n:"Hunter's Shade",emoji:"👤",type:"Boss",source:"Speculated"},
+{n:"Final Boss (?)",emoji:"👑",type:"Boss",source:"Speculated"}
+];
+
+const AREAS=[
+{n:"Bridle of Pharris",emoji:"🏰",desc:"A towering fortress area shown in early trailers. Features vertical platforming and bell mechanisms. Likely an early-to-mid game area.",biome:"Castle"},
+{n:"Deepnest (Return?)",emoji:"🕷️",desc:"A dark, web-filled area reminiscent of Deepnest. May be a different region of Pharloom with similar aesthetics.",biome:"Dark Caves"},
+{n:"Bloom Garden",emoji:"🌸",desc:"A lush, overgrown garden area with giant flowers and thorny vines. Shown prominently in trailers with platforming challenges.",biome:"Garden"},
+{n:"Gold City",emoji:"🏛️",desc:"An opulent city with gold and amber architecture. Likely the central hub of Pharloom, similar to City of Tears.",biome:"Urban"},
+{n:"Coral Caves",emoji:"🌊",desc:"Underwater-themed caves with coral formations. Hornet may need special abilities to navigate water sections.",biome:"Aquatic"},
+{n:"Bell Tower",emoji:"🔔",desc:"A massive vertical tower with bell puzzles. Shown in multiple trailers. Silk Bind is essential for traversal here.",biome:"Tower"},
+{n:"Silk Nest",emoji:"🧵",desc:"A web-filled nest area, possibly the domain of Pharloom's spider inhabitants. Expected to be a challenging late-game zone.",biome:"Nest"},
+{n:"Pharloom Depths",emoji:"🕳️",desc:"The deep underground of Pharloom. Likely contains the most difficult enemies and the path to the game's final areas.",biome:"Underground"}
+];
+
+const COMPARE=[
+{f:"Protagonist",hk:"The Knight (Void entity)",ss:"Hornet (Spider-Weaver)"},
+{f:"Kingdom",hk:"Hallownest",ss:"Pharloom"},
+{f:"Primary Resource",hk:"Soul",ss:"Silk"},
+{f:"Healing",hk:"Focus (Soul)",ss:"Silk Bind"},
+{f:"Weapon",hk:"Nail (single type)",ss:"Needle + multiple weapons"},
+{f:"Movement Speed",hk:"Moderate",ss:"Fast"},
+{f:"Crafting",hk:"None",ss:"Full crafting system"},
+{f:"Quests",hk:"Minimal / organic",ss:"Formal quest system"},
+{f:"Grappling",hk:"No",ss:"Yes (Silk Bind)"},
+{f:"Traps",hk:"No",ss:"Yes (Silk Traps)"},
+{f:"Boss Count",hk:"~22 (base game)",ss:"~150+ enemies confirmed"},
+{f:"Map Size",hk:"Large",ss:"Much larger (2x estimated)"},
+{f:"NPC Depth",hk:"Memorable, minimal",ss:"Deeper interactions"},
+{f:"Difficulty",hk:"Challenging",ss:"More challenging"},
+{f:"Platforming",hk:"Moderate",ss:"More demanding"},
+{f:"Charms",hk:"30 Charms, Notch system",ss:"TBA (possibly different)"}
+];
+
+const TIMELINE=[
+{date:"Feb 2019",title:"Silksong Announced",desc:"Team Cherry reveals Hornet as the protagonist of a full sequel, not DLC.",filled:true},
+{date:"Feb 2019",title:"First Trailer Drops",desc:"Showcases Pharloom, new abilities, enemies, and the Silk system. Community goes wild.",filled:true},
+{date:"2019–2020",title:"Silent Development",desc:"Long quiet period. Team Cherry focuses on development with minimal updates.",filled:true},
+{date:"Dec 2020",title:"Xbox Showcase",desc:"Silksong appears at The Game Awards. New gameplay footage shown.",filled:true},
+{date:"2021–2022",title:"Continued Silence",desc:"Team Cherry reiterates the game is still in development. No release date announced.",filled:true},
+{date:"Jun 2022",title:"Xbox & Bethesda Showcase",desc:"Extended gameplay demo shown. Confirmed for Game Pass at launch.",filled:true},
+{date:"Sep 2022",title:"Steam Page Live",desc:"Silksong Steam page goes live with screenshots and system requirements.",filled:true},
+{date:"2023",title:"Target Window Missed",desc:"Originally hinted for early 2023. Matthew Griffin (marketing) confirms delay — needs more time.",filled:true},
+{date:"2024",title:"Ongoing Development",desc:"Team Cherry shares occasional updates. No new trailer or gameplay shown publicly.",filled:true},
+{date:"2025",title:"Awaiting News",desc:"Community eagerly awaits any update. Steam page still active. Release date remains TBA.",filled:false}
+];
+
+// ===================== STATE =====================
+let abilityState=JSON.parse(localStorage.getItem('ss_abilities')||'{}');
+let enemyState=JSON.parse(localStorage.getItem('ss_enemies')||'{}');
+let areaState=JSON.parse(localStorage.getItem('ss_areas')||'{}');
+
+function save(){
+  try{localStorage.setItem('ss_abilities',JSON.stringify(abilityState));localStorage.setItem('ss_enemies',JSON.stringify(enemyState));localStorage.setItem('ss_areas',JSON.stringify(areaState))}catch(e){}
+}
+
+// ===================== RENDER =====================
+function renderAbilities(){
+  const list=document.getElementById('abilityList');
+  const done=ABILITIES.filter((_,i)=>abilityState[i]).length;
+  document.getElementById('abilityCount').textContent=`${done}/${ABILITIES.length}`;
+  document.getElementById('abilityBar').style.width=`${(done/ABILITIES.length)*100}%`;
+  list.innerHTML=ABILITIES.map((a,i)=>{
+    const c=abilityState[i];
+    const catColors={Combat:'#ef4444',Movement:'#3b82f6',Survival:'#22c55e',Defense:'#8b5cf6',Utility:'#f59e0b',Story:'#6366f1'};
+    return`<div class="flex items-start gap-3 p-3 sm:p-4 rounded-xl border cursor-pointer transition-all" style="background:#171310;border-color:${c?'#d97706':'#2a231c'}" onclick="toggleAbility(${i})">
+      <div class="check-box ${c?'done':''}" style="margin-top:1px">${c?'✓':''}</div>
+      <div class="flex-1 min-w-0">
+        <div class="flex items-center gap-1.5 flex-wrap">
+          <span class="text-sm sm:text-base">${a.emoji}</span>
+          <span class="text-xs sm:text-sm font-semibold ${c?'text-ss-muted line-through':'text-ss-text'}">${a.n}</span>
+          <span class="text-[8px] sm:text-[9px] px-1.5 py-0.5 rounded-full font-semibold" style="background:${catColors[a.cat]}22;color:${catColors[a.cat]}">${a.cat}</span>
+          ${!a.confirmed?'<span class="text-[8px] sm:text-[9px] px-1.5 py-0.5 rounded-full bg-ss-border text-ss-muted">Unconfirmed</span>':''}
+        </div>
+        <p class="text-[10px] sm:text-[11px] text-ss-muted mt-1 leading-relaxed">${a.desc}</p>
+      </div>
+    </div>`}).join('');
+}
+function toggleAbility(i){abilityState[i]=!abilityState[i];save();renderAbilities()}
+
+function renderEnemies(){
+  const grid=document.getElementById('enemyGrid');
+  const done=ENEMIES.filter((_,i)=>enemyState[i]).length;
+  document.getElementById('enemyCount').textContent=`${done}/${ENEMIES.length}`;
+  document.getElementById('enemyBar').style.width=`${(done/ENEMIES.length)*100}%`;
+  grid.innerHTML=ENEMIES.map((e,i)=>{
+    const c=enemyState[i];
+    const isBoss=e.type==='Boss';
+    return`<div class="enemy-card ${c?'confirmed':''}" onclick="toggleEnemy(${i})">
+      <div class="flex items-center gap-2 mb-1.5">
+        <span class="text-base sm:text-lg">${e.emoji}</span>
+        <div class="flex-1 min-w-0">
+          <div class="text-[11px] sm:text-xs font-semibold text-ss-text truncate">${e.n}</div>
+        </div>
+        ${c?'<span class="text-[8px] px-1 py-0.5 rounded-full bg-amber-500/20 text-amber-300 font-semibold">✓</span>':''}
+      </div>
+      <div class="flex items-center gap-1.5 flex-wrap">
+        <span class="text-[8px] sm:text-[9px] px-1.5 py-0.5 rounded-full font-semibold ${isBoss?'bg-red-500/15 text-red-400':'bg-ss-border text-ss-muted'}">${e.type}</span>
+        <span class="text-[8px] sm:text-[9px] text-ss-muted">${e.source}</span>
+      </div>
+    </div>`}).join('');
+}
+function toggleEnemy(i){enemyState[i]=!enemyState[i];save();renderEnemies()}
+
+function renderAreas(){
+  const list=document.getElementById('areaList');
+  const done=AREAS.filter((_,i)=>areaState[i]).length;
+  document.getElementById('areaCount').textContent=`${done}/${AREAS.length}`;
+  document.getElementById('areaBar').style.width=`${(done/AREAS.length)*100}%`;
+  list.innerHTML=AREAS.map((a,i)=>{
+    const c=areaState[i];
+    return`<div class="flex items-start gap-3 p-3 sm:p-4 rounded-xl border cursor-pointer transition-all" style="background:#171310;border-color:${c?'#d97706':'#2a231c'}" onclick="toggleArea(${i})">
+      <div class="check-box ${c?'done':''}" style="margin-top:1px">${c?'✓':''}</div>
+      <div class="flex-1 min-w-0">
+        <div class="flex items-center gap-1.5 flex-wrap">
+          <span class="text-sm sm:text-base">${a.emoji}</span>
+          <span class="text-xs sm:text-sm font-semibold ${c?'text-ss-muted line-through':'text-ss-text'}">${a.n}</span>
+          <span class="text-[8px] sm:text-[9px] px-1.5 py-0.5 rounded-full bg-amber-500/10 text-amber-400">${a.biome}</span>
+        </div>
+        <p class="text-[10px] sm:text-[11px] text-ss-muted mt-1 leading-relaxed">${a.desc}</p>
+      </div>
+    </div>`}).join('');
+}
+function toggleArea(i){areaState[i]=!areaState[i];save();renderAreas()}
+
+function renderCompare(){
+  document.getElementById('compareBody').innerHTML=COMPARE.map(c=>`
+    <tr class="border-b border-ss-border">
+      <td class="py-2.5 sm:py-3 pr-3 text-ss-muted font-medium">${c.f}</td>
+      <td class="py-2.5 sm:py-3 px-3 text-center text-ss-text text-[11px] sm:text-sm">${c.hk}</td>
+      <td class="py-2.5 sm:py-3 pl-3 text-center text-amber-300 text-[11px] sm:text-sm font-medium">${c.ss}</td>
+    </tr>`).join('');
+}
+
+function renderTimeline(){
+  document.getElementById('timelineList').innerHTML=TIMELINE.map((t,i)=>`
+    <div class="flex gap-3 sm:gap-4 ${i<TIMELINE.length-1?'pb-5 sm:pb-6':''}">
+      <div class="flex flex-col items-center flex-shrink-0">
+        <div class="timeline-dot ${t.filled?'filled':''}"></div>
+        ${i<TIMELINE.length-1?'<div class="w-px flex-1 bg-ss-border mt-1"></div>':''}
+      </div>
+      <div class="flex-1 min-w-0 -mt-0.5">
+        <div class="text-[10px] sm:text-xs font-semibold text-amber-400 mb-0.5">${t.date}</div>
+        <div class="text-xs sm:text-sm font-semibold text-ss-text mb-0.5">${t.title}</div>
+        <p class="text-[10px] sm:text-[11px] text-ss-muted leading-relaxed">${t.desc}</p>
+      </div>
+    </div>`).join('');
+}
+
+// ===================== NAV =====================
+function setTab(el){document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('on'));el.classList.add('on')}
+function setBN(el){document.querySelectorAll('.bottom-nav-item').forEach(b=>b.classList.remove('active'));el.classList.add('active')}
+
+function updateNav(){
+  const sections=['abilities','enemies','areas','mechanics','compare','timeline','release'];
+  const scrollY=window.scrollY+120;
+  let current='abilities';
+  sections.forEach(id=>{const el=document.getElementById(id);if(el&&el.offsetTop<=scrollY)current=id});
+  document.querySelectorAll('.bottom-nav-item').forEach(item=>{
+    const href=item.getAttribute('href')?.replace('#','');
+    item.classList.toggle('active',href===current);
+  });
+  document.querySelectorAll('.tab-btn').forEach(btn=>{
+    const href=btn.getAttribute('href')?.replace('#','');
+    btn.classList.toggle('on',href===current);
+  });
+}
+let scrollTimer;
+window.addEventListener('scroll',()=>{clearTimeout(scrollTimer);scrollTimer=setTimeout(updateNav,50)},{passive:true});
+
+document.addEventListener('click',e=>{
+  const menu=document.getElementById('mMenu');
+  const btn=e.target.closest('button[onclick*="mMenu"]');
+  if(!btn&&!menu.contains(e.target)&&!menu.classList.contains('hidden'))menu.classList.add('hidden');
+});
+
+// ===================== INIT =====================
+document.addEventListener('DOMContentLoaded',()=>{
+  renderAbilities();renderEnemies();renderAreas();renderCompare();renderTimeline();
+  lucide.createIcons();updateNav();
+});
+</script>
+</body>
+</html>
